@@ -6,6 +6,10 @@ import { MdOutlineLogin, MdSubscriptions } from "react-icons/md";
 import { BsFillStopwatchFill } from "react-icons/bs";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
+
+
+
+
 function Sidebar() {
   return (
     <>
@@ -31,14 +35,18 @@ function Sidebar() {
           <p className="mb-0">Videos I liked</p>
         </div>
         <hr />
-       
+
+        
         <Link className="text-dark" to={"/login"}>
           <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
             <MdOutlineLogin className="fs-5" />
             <p className="mb-0">Login</p>
           </div>
         </Link>
+
         <hr />
+        
+        
 
         <ul>
           <h6>Channels</h6>
