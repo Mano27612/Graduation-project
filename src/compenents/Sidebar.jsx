@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 function Sidebar() {
   return (
     <>
@@ -43,6 +44,7 @@ function Sidebar() {
             <p className="mb-0">Login</p>
           </div>
         </Link>
+        
         <hr />
         
         <Link className="text-dark" to={"/register"}>

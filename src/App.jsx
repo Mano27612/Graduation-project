@@ -10,9 +10,29 @@ import SearchPage from "./pages/SearchPage";
 import VideosILiked from "./pages/VideosILiked";
 import Login from "./pages/Login";
 import Register  from "./pages/Register";
+import React, { useState } from "react";
 
 
-function App() {
+// const App =() =>{
+
+
+//   const [currentForm, setCurrentForm] = useState('login');
+
+//   const toggleForm = (formName) => {
+//     setCurrentForm(formName);
+//   }
+  
+//   return (
+//     <div className="App">
+//       {
+//         currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
+//       }
+//     </div>
+//   );
+  
+//     }
+
+    function App (){
   return (
     <>
   
@@ -21,7 +41,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/login/:id" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
           <Route path="/videos/:id" element={<VideoPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/channel/:id" element={<ChannelPage />} />
@@ -35,7 +55,7 @@ function App() {
      
     </>
   );
-}
+  }
 
 export default App;
 
