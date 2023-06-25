@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import VideoCard from "../compenents/VideoCard";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import RelatedVideo from "../compenents/RelatedVideo";
 import { Accordion, Button, Col, Container, Row } from "react-bootstrap";
@@ -67,7 +67,9 @@ const VideoPage = () => {
                     <span className="mb-0">333 subscribe</span>
                   </div>
                 </div>
+                <Link>
                 <Button variant="dark">Subscribe</Button>
+                </Link>
               </Col>
               <Col
                 xs={12}

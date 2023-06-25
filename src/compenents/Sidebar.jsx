@@ -19,22 +19,27 @@ function Sidebar() {
           <AiFillHome className="fs-5" />
           <p className="mb-0">Home Page</p>
         </div>
-        <Link className="text-dark" to={"/subscribtions"}>
+        <Link className="text-dark" to={"/subscriptions"}>
           <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
             <MdSubscriptions className="fs-5" />
-            <p className="mb-0">Subscribtions</p>
+            <p className="mb-0">Subscriptions</p>
           </div>
         </Link>
         <hr />
 
+        <Link className="text-dark" to={"/watch later"}>
         <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
           <BsFillStopwatchFill className="fs-5" />
           <p className="mb-0">Watch later</p>
         </div>
+        </Link>
+
+        <Link className="text-dark" to={"/videos i liked"}> 
         <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
           <AiFillLike className="fs-5" />
           <p className="mb-0">Videos I liked</p>
         </div>
+        </Link>
         <hr />
 
         
