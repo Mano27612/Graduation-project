@@ -20,6 +20,7 @@ const Home = () => {
           <Col  xs={12} md={12} lg={10} xl={10} xxl={10}>
             <VideoList />
           </Col>
+
         </Row>
         <MobileFooter/>
       </Container>

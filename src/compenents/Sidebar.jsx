@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import { categories } from "../Utils/Constant";
 import { AiFillHome, AiFillLike } from "react-icons/ai";
-import { MdOutlineAppRegistration, MdOutlineLogin, MdSubscriptions } from "react-icons/md";
+import { MdOutlineAppRegistration, MdOutlineLogin, MdPlaylistAdd, MdSubscriptions } from "react-icons/md";
 import { BsFillStopwatchFill } from "react-icons/bs";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -26,6 +26,13 @@ function Sidebar() {
           </div>
         </Link>
         <hr />
+
+        <Link className="text-dark" to={"/playlist"}>
+          <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
+            <MdPlaylistAdd className="fs-5" />
+            <p className="mb-0">PlayList</p>
+          </div>
+        </Link>
 
         <Link className="text-dark" to={"/watch later"}>
         <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">

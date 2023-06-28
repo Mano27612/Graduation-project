@@ -60,12 +60,25 @@ function Header() {
             <Badge className="fs-2 mx-2" color="secondary" badgeContent={5}>
               <IoIosNotificationsOutline />
             </Badge>
-            <img
+
+            <Link className="text-dark" to={"/profilepage"}>
+          <div >
+          <img
               src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
               class="rounded-circle shadow-4"
               style={{ width: "40px" }}
               alt="Avatar"
-            />
+           />
+          </div>
+        </Link>
+
+            {/* <img
+              src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+              class="rounded-circle shadow-4"
+              style={{ width: "40px" }}
+              alt="Avatar"
+           /> */}
+
           </Col>
         </Row>
       </Container>
