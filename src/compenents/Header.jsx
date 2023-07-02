@@ -21,7 +21,7 @@ function Header() {
           <Col xs={3}>
             <Link to={"/home"} className="d-flex align-items-center gap-2">
               <AiFillYoutube className="text-danger fs-1" />
-              <h4 className="text-dark mb-0">Zomord</h4>
+              <h4 className="text-dark mb-0">ZoMoRd</h4>
             </Link>
           </Col>
           {/* the part of input search with small screens */}
