@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import { Button, Col, Container, Offcanvas, Row } from "react-bootstrap";
-import {  AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { BiLogOut } from "react-icons/bi";
 import { BsYoutube } from "react-icons/bs";
@@ -11,11 +11,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@mui/material";
 import { fetchSearchVideos } from "../Redux/Slices/SearchSlice";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Header() {
   const [showInput, setShowInput] = useState(false);
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState("");
-  const isLogged = localStorage.getItem("user");
+  const isLogged = localStorage.getItem("formData");
   const user = JSON.parse(isLogged);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,7 +25,7 @@ function Header() {
   const navigat = useNavigate();
   const handleLogOut = () => {
     localStorage.clear();
-    navigat("/sign-up");
+    navigat("/sign-in");
   };
   const handleSearchClick = () => {
     setShowInput(!showInput);
@@ -32,14 +34,31 @@ function Header() {
     dispatch(fetchSearchVideos(name));
     navigat("/search-result");
   };
+  useEffect(() => {
+    const formData = localStorage.getItem('formData');
+
+    if (formData) {
+      // Parse the stored form data
+      const user = JSON.parse(formData);
+
+      // Show success toast notification
+      toast.success(`Welcom ${user.email} !`, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  }, []);
   return (
     <>
       <Container fluid>
+      <ToastContainer/>
         <Row className="header p-3 d-flex justify-content-between">
           {/* the part of logo  */}
           <Col className="d-flex align-items-center">
             <Link to={"/"} className="d-flex align-items-center  w-50 gap-2">
-              <BsYoutube style={{fontSize:"40px"}} className="text-danger " />
+              <BsYoutube
+                style={{ fontSize: "40px" }}
+                className="text-danger "
+              />
               <h4 className="text-dark mb-0">Youtube</h4>
             </Link>
           </Col>
@@ -123,9 +142,7 @@ function Header() {
             <Offcanvas placement="end" show={show} onHide={handleClose}>
               <Offcanvas.Header closeButton>
                 <div className="d-block">
-                  <Offcanvas.Title>{user?.username}</Offcanvas.Title>
-
-                  <h4 className="fw-bold">{user?.email}</h4>
+                  <Offcanvas.Title>{user?.email}</Offcanvas.Title>
                 </div>
               </Offcanvas.Header>
               <Offcanvas.Body>
