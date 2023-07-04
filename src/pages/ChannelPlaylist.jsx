@@ -16,7 +16,7 @@ import Sidebar from "../compenents/Sidebar";
 import { formatNumber } from "../Utils/FormatNumber";
 import VideoCard from "../compenents/VideoCard";
 import { Avatar } from "@mui/material";
-import { addSubscribtions, removeSubscribtions } from "../Redux/Slices/Subscribtion";
+import { addSubscriptions, removeSubscriptions } from "../Redux/Slices/Subscribtion";
 const ChannelPlaylist = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -29,15 +29,15 @@ const ChannelPlaylist = () => {
   const subscribes = useSelector((state) => state.subscribtions);
   const isSubscribe =
   channel &&
-    subscribes.some((subscribe) => subscribe?.snippet?.channelTitle  === channel?.snippet?.title);
+    subscribes.some((subscribe) => subscribe?.snippet?.title  === channel?.snippet?.title || subscribe?.snippet?.channelTitle  === channel?.snippet?.title);
     const addSubscribe = () => {
-      dispatch(addSubscribtions(channel));
+      dispatch(addSubscriptions(channel));
       toast.success("You are subscribed !", {
         position: toast.POSITION.TOP_RIGHT,
       });
     };
     const removeSubscribe = () => {
-      dispatch(removeSubscribtions(channel.id));
+      dispatch(removeSubscriptions(channel.id));
       toast.error("You are not subscribed !", {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -52,7 +52,7 @@ const ChannelPlaylist = () => {
           </Col>
           <Col xs={12} md={12} lg={10} xl={10} xxl={10}>
             {/* Banner of the channel */}
-            <div className="mb-3" style={{ width: "100%", height: "400px" }}>
+            <div className="mb-3" style={{ width: "100%", height: "300px" }}>
               <img
                 style={{ objectFit: "cover" }}
                 className="w-100 h-100 "
@@ -85,13 +85,13 @@ const ChannelPlaylist = () => {
                   </Button> */}
                   {isSubscribe ? (
                       <>
-                        <Button className="mx-0 mx-sm-5" onClick={removeSubscribe} variant="danger">
+                        <Button className="me-5 mx-sm-5" onClick={removeSubscribe} variant="danger">
                           Subscribed
                         </Button>
                       </>
                     ) : (
                       <>
-                        <Button className="mx-0 mx-sm-5" onClick={addSubscribe} variant="dark">
+                        <Button className="me-5 mx-sm-5" onClick={addSubscribe} variant="dark">
                           Subscribe
                         </Button>
                       </>

@@ -129,13 +129,7 @@ function Header() {
                 >
                   Sign in
                 </Button>
-                <Button
-                  href="/sign-up"
-                  className="mx-1"
-                  variant="outline-danger"
-                >
-                  Sign up
-                </Button>
+                
               </>
             )}
 

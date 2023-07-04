@@ -22,8 +22,8 @@ import {
   removeWatchLaterVideo,
 } from "../Redux/Slices/WatchLater";
 import {
-  addSubscribtions,
-  removeSubscribtions,
+  addSubscriptions,
+  removeSubscriptions,
 } from "../Redux/Slices/Subscribtion";
 import { fetchComments, getComments } from "../Redux/Slices/CommentSlice";
 
@@ -76,13 +76,13 @@ const VideoPage = () => {
     });
   };
   const addSubscribe = () => {
-    dispatch(addSubscribtions(currentVideo));
+    dispatch(addSubscriptions(currentVideo));
     toast.success("You are subscribed !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
   const removeSubscribe = () => {
-    dispatch(removeSubscribtions(currentVideo.id));
+    dispatch(removeSubscriptions(currentVideo.id));
     toast.error("You are not subscribed !", {
       position: toast.POSITION.TOP_RIGHT,
     });
