@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 .header-search {
   width: 100%;
@@ -11,6 +12,9 @@
   width: 100%;
   transition: 0.5s;
 } */
+h4{
+  color: #282828;
+}
 .sidebar {
   padding: 20px;
   background-color: #ffffff;
@@ -115,6 +119,51 @@ li:hover {
 
 .active {
   color: rgb(162, 7, 7);
+}
+
+.dark{
+  background-color: #282828;
+  color: #f1f1f1;
+  .carddark{
+    background-color: #282828; 
+     
+  }
+  .channeltitle{
+    color: #b1b1b1;
+  }
+  .badgeDark{
+    background-color: #282828;
+    color: #f1f1f1;
+  }
+  .text{
+    color: #f1f1f1;
+  }
+  .button{
+    background-color: #f1f1f1;
+    color: #282828;
+  }
+  .activeDark{
+    color: rgb(4, 162, 224);
+    
+  }
+  .shadowDark{
+    box-shadow: 3px 3px 8px #403b3b, -3px -3px 8px #3b3535;
+  }
+  .input{
+    background-color: transparent;
+    color: white;
+  }
+  .sideDark{
+    
+    color: #f1f1f1;
+  }
+  .sideDark:hover{
+    background-color: #cbced1;
+    color: #282828;
+  }
   
-  
+}
+.link{
+
+color: rgb(24, 24, 24);
 }
