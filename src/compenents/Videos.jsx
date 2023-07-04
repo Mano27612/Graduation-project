@@ -40,9 +40,9 @@ const VideoList = () => {
             style={{cursor:"pointer"}}
               key={index}
               onClick={() => handleCategoryClick(category.snippet.title)}
-              className="p-2 me-3 mt-2"
+              className="p-2 me-3 mt-2  badgeDark"
               pill
-              bg="danger"
+              
             >
               {category?.snippet?.title}
             </Badge>
@@ -62,7 +62,7 @@ const VideoList = () => {
                 xl={4}
                 xxl={3}
               >
-                <Card className="w-100 h-100">
+                <Card className="w-100 h-100 carddark">
                   <Link to={`/videos/${video?.id?.videoId}`}>
                     <Card.Img
                       variant="top"
@@ -73,7 +73,7 @@ const VideoList = () => {
                     <div style={{ width: "15%" }} className="me-2">
                       <Avatar
                         alt="Travis Howard"
-                        src={video?.snippet?.channelThumbnails?.default.url}
+                        src={video?.snippet?.thumbnails?.default?.url}
                       />
                     </div>
                     <div style={{ width: "85%" }}>
@@ -83,14 +83,14 @@ const VideoList = () => {
 
                       <div className="d-flex gap-2 align-items-center mb-2">
                         <Link to={`/channel/${video?.snippet?.channelId}`}>
-                          <Card.Text className="fw-bold fs-6 mb-0">
+                          <Card.Text className="fw-bold fs-6 mb-0 channeltitle">
                             {video?.snippet?.channelTitle}
                           </Card.Text>
                         </Link>
                       </div>
-                      <Card.Text className="text-muted fs-6">
+                      <Card.Text className="text-muted fs-6 channeltitle">
                         {video?.snippet?.publishTime}
-                        <span className="mx-1">
+                        <span className="mx-1 channeltitle">
                           {formatNumber(video?.statistics?.viewCount)} Views
                         </span>
                       </Card.Text>

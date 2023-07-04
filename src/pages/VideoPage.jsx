@@ -24,7 +24,7 @@ import {
 import {
   addSubscriptions,
   removeSubscriptions,
-} from "../Redux/Slices/Subscribtion";
+} from "../Redux/Slices/SubscribtionVideos";
 import { fetchComments, getComments } from "../Redux/Slices/CommentSlice";
 
 const VideoPage = () => {
@@ -36,14 +36,17 @@ const VideoPage = () => {
   const watchLater = useSelector((state) => state.watchLater);
   const comments = useSelector(getComments);
   const isSaved =
-  currentVideo && watchLater.some((video) => video.id === currentVideo.id);
+    currentVideo && watchLater.some((video) => video.id === currentVideo.id);
   const isLiked =
-  currentVideo &&
-  likedVideos.some((likedVideo) => likedVideo.id === currentVideo.id);
+    currentVideo &&
+    likedVideos.some((likedVideo) => likedVideo.id === currentVideo.id);
   const subscribes = useSelector((state) => state.subscribtions);
   const isSubscribe =
     currentVideo &&
-    subscribes.some((subscribe) => subscribe?.snippet?.channelTitle === currentVideo?.snippet?.channelTitle);
+    subscribes.some(
+      (subscribe) =>
+        subscribe?.snippet?.channelTitle === currentVideo?.snippet?.channelTitle
+    );
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -88,11 +91,11 @@ const VideoPage = () => {
     });
   };
   const likeButtonClassName = isLiked
-    ? "fs-3 chip-action text-light p-1 bg-dark"
-    : "fs-3 chip-action";
+    ? "fs-3 chip-action text-light p-1 bg-dark button"
+    : "fs-3 chip-action button";
   const saveButtonClassName = isSaved
-    ? "fs-3 chip-action text-light p-1 bg-dark"
-    : "fs-3 chip-action";
+    ? "fs-3 chip-action text-light p-1 bg-dark button"
+    : "fs-3 chip-action button";
   return (
     <>
       <Container fluid style={{ marginTop: "90px" }}>
@@ -131,12 +134,15 @@ const VideoPage = () => {
                         src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                       />
                       <div className="d-flex flex-column">
-                        <Link to={`/channel/${currentVideo?.snippet?.channelId}`} className="text-dark ">
-                          <h6 className="mb-0 fw-bold">
+                        <Link
+                          to={`/channel/${currentVideo?.snippet?.channelId}`}
+                          className="text-dark text"
+                        >
+                          <h6 className="mb-0 fw-bold link text">
                             {currentVideo?.snippet?.channelTitle}
                           </h6>
                         </Link>
-                        <span className="mb-0">
+                        <span className="mb-0 text">
                           {" "}
                           {formatNumber(
                             channel?.statistics?.subscriberCount
@@ -153,7 +159,7 @@ const VideoPage = () => {
                       </>
                     ) : (
                       <>
-                        <Button onClick={addSubscribe} variant="dark">
+                        <Button className="button" onClick={addSubscribe} variant="dark">
                           Subscribe
                         </Button>
                       </>
@@ -170,9 +176,10 @@ const VideoPage = () => {
                   >
                     <Stack direction="row" spacing={1}>
                       <Chip
+                      className="button"
                         avatar={
                           <Avatar>
-                            <IoMdShareAlt className="fs-3 chip-action" />
+                            <IoMdShareAlt className="fs-3 chip-action button" />
                           </Avatar>
                         }
                         label="share"
@@ -180,6 +187,7 @@ const VideoPage = () => {
                       {isLiked ? (
                         <>
                           <Chip
+                          className="button"
                             avatar={
                               <Avatar>
                                 <AiOutlineLike
@@ -196,6 +204,7 @@ const VideoPage = () => {
                       ) : (
                         <>
                           <Chip
+                            className="button"
                             avatar={
                               <Avatar>
                                 <AiOutlineLike
@@ -212,6 +221,7 @@ const VideoPage = () => {
                       )}
 
                       <Chip
+                      className="button"
                         avatar={
                           <Avatar>
                             <AiOutlineDislike className="fs-3 chip-action" />
@@ -222,6 +232,7 @@ const VideoPage = () => {
                       {isSaved ? (
                         <>
                           <Chip
+                          className="button"
                             avatar={
                               <Avatar>
                                 <BiSave
@@ -236,6 +247,7 @@ const VideoPage = () => {
                       ) : (
                         <>
                           <Chip
+                          className="button"
                             avatar={
                               <Avatar>
                                 <BiSave
@@ -253,10 +265,10 @@ const VideoPage = () => {
                 </Row>
                 {/* here the part of description and views */}
 
-                <Row className="mb-4 shadow-sm">
+                <Row className="mb-4 shadow-sm ">
                   <Accordion defaultActiveKey="0">
-                    <Accordion.Item eventKey="0">
-                      <Accordion.Header>
+                    <Accordion.Item  eventKey="0">
+                      <Accordion.Header  >
                         <div>
                           <p>
                             {" "}
@@ -282,10 +294,10 @@ const VideoPage = () => {
                 </Row>
 
                 {/* here the part of comments */}
-                <Row>
-                  <Col  className="mb-3">
+                <Row >
+                  <Col className="mb-3">
                     <Accordion defaultActiveKey="0">
-                      <Accordion.Item eventKey="0">
+                      <Accordion.Item  eventKey="0">
                         <Accordion.Header>
                           <h6>see comments</h6>
                         </Accordion.Header>

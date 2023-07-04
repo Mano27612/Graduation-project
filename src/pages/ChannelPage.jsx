@@ -5,7 +5,11 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannel, fetchChannelById } from "../Redux/Slices/ChannelSlice";
 import { formatNumber } from "../Utils/FormatNumber";
-import { addSubscriptions, removeSubscriptions } from "../Redux/Slices/Subscribtion";
+import "../App.css"
+import {
+  addSubscriptions,
+  removeSubscriptions,
+} from "../Redux/Slices/SubscribtionVideos";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const ChannelPage = () => {
@@ -14,8 +18,11 @@ const ChannelPage = () => {
   const channel = useSelector(getChannel);
   const subscribes = useSelector((state) => state.subscribtions);
   const isSubscribe =
-  channel &&
-    subscribes.some((subscribe) =>  subscribe?.snippet?.channelTitle  === channel?.snippet?.title )
+    channel &&
+    subscribes.some(
+      (subscribe) =>
+        subscribe?.snippet?.channelTitle === channel?.snippet?.title
+    );
   useEffect(() => {
     dispatch(fetchChannelById(id));
   }, [id, dispatch]);
@@ -34,7 +41,7 @@ const ChannelPage = () => {
   return (
     <>
       <Container fluid style={{ marginTop: "100px" }}>
-        <ToastContainer/>
+        <ToastContainer />
         <Row>
           <Col className="d-none d-lg-block" md={2} lg={2} xl={2} xxl={2}>
             <Sidebar />
@@ -69,30 +76,35 @@ const ChannelPage = () => {
                     subscribers {channel?.statistics?.videoCount} video
                   </span>
 
-                 
-                    {isSubscribe ? (
-                      <>
-                        <Button className="mx-0 mx-sm-5" onClick={removeSubscribe} variant="danger">
-                          Subscribed
-                        </Button>
-                      </>
-                    ) : (
-                      <>
-                        <Button className="mx-0 mx-sm-5" onClick={addSubscribe} variant="dark">
-                          Subscribe
-                        </Button>
-                      </>
-                    )}
+                  {isSubscribe ? (
+                    <>
+                      <Button
+                        className="mx-0 mx-sm-5 "
+                        onClick={removeSubscribe}
+                        variant="danger"
+                      >
+                        Subscribed
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button
+                        className="mx-0 mx-sm-5 button"
+                        onClick={addSubscribe}
+                        variant="dark"
+                      >
+                        Subscribe
+                      </Button>
+                    </>
+                  )}
                 </div>
-
-              
               </div>
             </div>
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link to={`/channel/${id}/videos`}>Videos</Link>
-              <Link to={`/channel/${id}/playlists`}>Playlists</Link>
+              <Link className="text" to={`/channel/${id}/videos`}>Videos</Link>
+              <Link className="text" to={`/channel/${id}/playlists`}>Playlists</Link>
             </div>
             <hr />
           </Col>

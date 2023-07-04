@@ -49,12 +49,10 @@ const Subscribtions = () => {
                             <Card.Text className="fw-bold fs-6 mb-0 d-flex align-items-center ">
                               <Avatar
                                 alt="Travis Howard"
-                                src={
-                                  video?.snippet?.channelThumbnails?.default.url
-                                }
+                                src={video?.snippet?.thumbnails?.default?.url}
                               />
 
-                              <span className="mx-2">
+                              <span className="mx-2 link text">
                               {video?.snippet?.channelTitle ? video?.snippet?.channelTitle : video?.snippet?.title}
                               </span>
                             </Card.Text>

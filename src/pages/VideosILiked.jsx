@@ -56,13 +56,10 @@ const VideosILiked = () => {
                           <Card.Text className="fw-bold fs-6 mb-0 d-flex align-items-center ">
                             <Avatar
                               alt="Travis Howard"
-                              src={
-                                video?.snippet?.channelThumbnails
-                                  ?.default.url
-                              }
+                              src={video?.snippet?.thumbnails?.default?.url}
                             />
 
-                            <span className="mx-2">{video?.snippet?.channelTitle}</span>
+                            <span className="mx-2 link text">{video?.snippet?.channelTitle}</span>
                           </Card.Text>
                         </Link>
                       </div>
