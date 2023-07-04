@@ -4,18 +4,28 @@ const SubscribtionsSlice = createSlice({
   name: "subscribtions",
   initialState: JSON.parse(localStorage.getItem("subscribtions")) || [],
   reducers: {
-    addSubscribtions: (state, action) => {
-      state.push(action.payload);
-      localStorage.setItem("subscribtions", JSON.stringify(state));
+    addSubscriptions: (state, action) => {
+      const newSubscription = action.payload;
+      const updatedSubscriptions = [...state, newSubscription];
+      localStorage.setItem(
+        "subscribtions",
+        JSON.stringify(updatedSubscriptions)
+      );
+      return updatedSubscriptions;
     },
-    removeSubscribtions: (state, action) => {
+    removeSubscriptions: (state, action) => {
       const videoId = action.payload;
-      const updatedVideos = state.filter((video) => video.id !== videoId);
-      state.splice(0, state.length, ...updatedVideos);
-      localStorage.setItem("subscribtions", JSON.stringify(state));
+      const updatedSubscriptions = state.filter(
+        (subscription) => subscription.id !== videoId
+      );
+      localStorage.setItem(
+        "subscribtions",
+        JSON.stringify(updatedSubscriptions)
+      );
+      return updatedSubscriptions;
     },
   },
 });
 export default SubscribtionsSlice.reducer;
-export const { addSubscribtions, removeSubscribtions } =
+export const { addSubscriptions, removeSubscriptions } =
   SubscribtionsSlice.actions;

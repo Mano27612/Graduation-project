@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannel, fetchChannelById } from "../Redux/Slices/ChannelSlice";
 import { formatNumber } from "../Utils/FormatNumber";
-import { addSubscribtions, removeSubscribtions } from "../Redux/Slices/Subscribtion";
+import { addSubscriptions, removeSubscriptions } from "../Redux/Slices/Subscribtion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const ChannelPage = () => {
@@ -15,18 +15,18 @@ const ChannelPage = () => {
   const subscribes = useSelector((state) => state.subscribtions);
   const isSubscribe =
   channel &&
-    subscribes.some((subscribe) =>  subscribe?.snippet?.channelTitle  === channel?.snippet?.title);
+    subscribes.some((subscribe) =>  subscribe?.snippet?.channelTitle  === channel?.snippet?.title )
   useEffect(() => {
     dispatch(fetchChannelById(id));
   }, [id, dispatch]);
   const addSubscribe = () => {
-    dispatch(addSubscribtions(channel));
+    dispatch(addSubscriptions(channel));
     toast.success("You are subscribed !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
   const removeSubscribe = () => {
-    dispatch(removeSubscribtions(channel.id));
+    dispatch(removeSubscriptions(channel.id));
     toast.error("You are not subscribed !", {
       position: toast.POSITION.TOP_RIGHT,
     });
@@ -41,12 +41,14 @@ const ChannelPage = () => {
           </Col>
           <Col xs={12} md={12} lg={10} xl={10} xxl={10}>
             {/* Banner of the channel */}
-            <img
-              style={{ height: "35%", objectFit: "cover" }}
-              className="w-100 mb-3"
-              src={channel?.brandingSettings?.image?.bannerExternalUrl}
-              alt=""
-            />
+            <div className="mb-3" style={{ width: "100%", height: "300px" }}>
+              <img
+                style={{ objectFit: "cover" }}
+                className="w-100 h-100 "
+                src={channel?.brandingSettings?.image?.bannerExternalUrl}
+                alt=""
+              />
+            </div>
             {/* Pic profile of the channel and content */}
             <div className="d-flex align-items-center justify-content-between">
               <div className="d-flex align-items-center">
@@ -67,9 +69,7 @@ const ChannelPage = () => {
                     subscribers {channel?.statistics?.videoCount} video
                   </span>
 
-                  {/* <Button className="mx-0 mx-sm-5 " variant="dark">
-                    Subscribe
-                  </Button> */}
+                 
                     {isSubscribe ? (
                       <>
                         <Button className="mx-0 mx-sm-5" onClick={removeSubscribe} variant="danger">
@@ -85,11 +85,7 @@ const ChannelPage = () => {
                     )}
                 </div>
 
-                {/* <div>
-                <Button className="me-5" variant="dark">
-                  Subscribe
-                </Button>
-              </div> */}
+              
               </div>
             </div>
 
