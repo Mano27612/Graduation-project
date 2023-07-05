@@ -27,6 +27,7 @@ const store = configureStore({
     subscribtions: SubscribtionReducer,
     comment: commentReducer,
     darkMode: darkModeReducer,
+   
   },
 });
 
