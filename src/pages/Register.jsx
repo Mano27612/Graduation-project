@@ -28,10 +28,10 @@ const Register = () => {
       console.log(response.data); // Do something with the response
   
       if (response.status === 200) {
-        const authToken = response.data.token;
+        const token = response.data.authorisation.token;
   
         // Save the authentication token in localStorage
-        localStorage.setItem('authToken', authToken);
+        localStorage.setItem('token', JSON.stringify(token));
   
         // Save the form data in localStorage
         localStorage.setItem('formData', JSON.stringify(formData));

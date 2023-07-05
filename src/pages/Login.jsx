@@ -4,6 +4,7 @@ import '../App.css'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -26,10 +27,12 @@ const Login = () => {
       console.log(response.data); // Do something with the response
   
       if (response.status === 200) {
-        const authToken = response.data.token;
-  
+        const accessToken = response.data.access_token;
+        
         // Save the authentication token in localStorage
-        localStorage.setItem('authToken', authToken);
+        localStorage.setItem('accessToken', JSON.stringify(accessToken));
+        // Save the form data in localStorage (if needed)
+        localStorage.setItem('formData', JSON.stringify(formData));
   
         // Redirect to the desired page
         window.location.href = '/';
@@ -37,17 +40,19 @@ const Login = () => {
     } catch (error) {
       if (error.response && error.response.status === 401) {
         // Handle invalid login credentials, e.g., display an error message to the user
-        toast.error('Invalid login credentials!', {
+        toast.error('the email or password is wrong!', {
           position: toast.POSITION.TOP_RIGHT,
         });
       } else {
+        // Display a generic error message for other errors
+        toast.error('An error occurred. Please try again later.', {
+          position: toast.POSITION.TOP_RIGHT,
+        });
         console.error(error);
       }
     }
   };
-  
-  
-  
+
   return (
     <div className="container-xxl d-flex align-items-center justify-content-center">
       <ToastContainer/>
@@ -59,8 +64,8 @@ const Login = () => {
             <form onSubmit={handleSubmit} className="d-flex flex-column gap-30">
               <div className="email">
                 <input
-                value={formData.email}
-                onChange={handleChange}
+                  value={formData.email}
+                  onChange={handleChange}
                   name="email"
                   placeholder="email"
                   type="email"
@@ -70,8 +75,8 @@ const Login = () => {
               </div>
               <div className="password">
                 <input
-                value={formData.password}
-                onChange={handleChange}
+                  value={formData.password}
+                  onChange={handleChange}
                   name="password"
                   placeholder="password"
                   type="password"
@@ -88,7 +93,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="d-flex align-items-center justify-content-center link">
-                Don't have account{" "}
+                Don't have an account{" "}
                 <Link className="mx-2 text-primary" to="/sign-up">
                   Sign up
                 </Link>
@@ -102,5 +107,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

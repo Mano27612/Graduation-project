@@ -12,6 +12,8 @@ import ChannelPlaylistReducer from "./Slices/ChannelPlaylistSlice";
 import SubscribtionReducer from "./Slices/SubscribtionVideos";
 import commentReducer from "./Slices/CommentSlice";
 import darkModeReducer from "./Slices/DarkMode";
+import userVideoReducer from "./Slices/UserVideos";
+import ImageSlice from "./Slices/ImageSlice";
 const store = configureStore({
   reducer: {
     videos: videosReducer,
@@ -27,7 +29,8 @@ const store = configureStore({
     subscribtions: SubscribtionReducer,
     comment: commentReducer,
     darkMode: darkModeReducer,
-   
+    uservideos: userVideoReducer,
+    image: ImageSlice
   },
 });
 

@@ -9,7 +9,7 @@ import { MdDarkMode } from "react-icons/md";
 import { GrChannel } from "react-icons/gr";
 import { FiSettings } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
-import { Badge } from "@mui/material";
+import { Avatar, Badge } from "@mui/material";
 import { fetchSearchVideos } from "../Redux/Slices/SearchSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
@@ -19,12 +19,15 @@ function Header() {
   const [showInput, setShowInput] = useState(false);
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState("");
-  const isLogged = localStorage.getItem("formData");
+  const isLogged = localStorage.getItem("accessToken");
   const user = JSON.parse(isLogged);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const isDarkMode = useSelector((state) => state.darkMode);
-  const userData = JSON.parse(localStorage.getItem("profileData"));
+  const userProfile = JSON.parse(localStorage.getItem("profileData"));
+  const userData = JSON.parse(localStorage.getItem("formData"));
+  const imageURL = useSelector((state) => state.image.imageURL);
+
   const handleDarkModeToggle = () => {
     dispatch(toggleDarkMode());
   };
@@ -46,15 +49,14 @@ function Header() {
     navigat("/search-result");
     setShowInput(!showInput);
   };
- 
- 
+
   return (
     <>
-      <Container  fluid>
+      <Container fluid>
         <ToastContainer />
-        <Row  className="header carddark shadowDark p-3 d-flex justify-content-between">
+        <Row className="header carddark shadowDark p-3 d-flex justify-content-between">
           {/* the part of logo  */}
-          <Col  className="d-flex align-items-center">
+          <Col className="d-flex align-items-center">
             <Link to={"/"} className="d-flex align-items-center  w-50 gap-2">
               {/* <img
                 style={{ width: "50px", height:"100%" }}
@@ -69,32 +71,36 @@ function Header() {
             </Link>
           </Col>
           {/* the part of input search with small screens */}
-         
-            <Col className="d-flex d-md-none justify-content-end align-items-center">
-              <AiOutlineSearch className="fs-1 link text" onClick={() => handleSearchClick(search)} />
-              {showInput && (
-                <div className="d-flex gap-2">
-                  <input
-                    className="form-control header-search rounded-5 border border-2"
-                    type="search"
-                    placeholder="Search"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                  {/* <Button onClick={() => handleSearch(search)} variant="dark">
-                    Search
-                  </Button> */}
-                </div>
-              )}
-            </Col>
-         
+
+          <Col className="d-flex d-md-none justify-content-end align-items-center">
+            <AiOutlineSearch
+              className="fs-1 link text"
+              onClick={() => handleSearchClick(search)}
+            />
+            {showInput && (
+              <div className="d-flex gap-2">
+                <input
+                  className="form-control header-search rounded-5 border border-2"
+                  type="search"
+                  placeholder="Search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+               
+              </div>
+            )}
+          </Col>
+
           {/* the part of input search with large screens */}
-          <Col className="d-flex d-none d-md-flex gap-2"  xs={3}
+          <Col
+            className="d-flex d-none d-md-flex gap-2"
+            xs={3}
             sm={3}
             md={3}
             lg={4}
             xl={4}
-            xxl={4}>
+            xxl={4}
+          >
             <input
               className="form-control input header-search rounded-5 border border-2"
               type="search"
@@ -102,29 +108,35 @@ function Header() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Button className="button" onClick={() => handleSearchClick(search)} variant="dark">
+            <Button
+              className="button"
+              onClick={() => handleSearchClick(search)}
+              variant="dark"
+            >
               Search
             </Button>
           </Col>
           {/* the part of profile and notification */}
-          <Col
-            className="d-flex align-items-center justify-content-center"
-           
-          >
-           
-            <MdDarkMode style={{fontSize:"30px"}} className="link text" onClick={handleDarkModeToggle}/>
+          <Col className="d-flex align-items-center justify-content-center">
+            <MdDarkMode
+              style={{ fontSize: "30px" }}
+              className="link text"
+              onClick={handleDarkModeToggle}
+            />
 
-            {isLogged ? (
+            {user ? (
               <>
                 <Badge className="fs-2 mx-2" color="secondary" badgeContent={5}>
                   <IoIosNotificationsOutline />
                 </Badge>
-                <img
+                <Avatar
                   onClick={handleShow}
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
-                  class="rounded-circle shadow-4"
-                  style={{ width: "40px" }}
-                  alt="Avatar"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                  }}
+                  alt="Travis Howard"
+                  src={imageURL}
                 />
               </>
             ) : (
@@ -141,12 +153,18 @@ function Header() {
 
             <Offcanvas placement="end" show={show} onHide={handleClose}>
               <Offcanvas.Header closeButton>
-                <div className="d-block">
-                  <Offcanvas.Title>{userData ? userData?.name : user?.email}</Offcanvas.Title>
+             <div className="d-block">
+             <div className="d-block">
+                  <Offcanvas.Title>
+                    {userProfile ? userProfile?.name : userData?.email}
+                  </Offcanvas.Title>
                 </div>
                 <div className="d-block">
-                  <Offcanvas.Title>{userData ? userData?.email : user?.name}</Offcanvas.Title>
+                  <Offcanvas.Title>
+                    {userProfile ? userProfile?.email : userData?.name}
+                  </Offcanvas.Title>
                 </div>
+             </div>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <ul>
