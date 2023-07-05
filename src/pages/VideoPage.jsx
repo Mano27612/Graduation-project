@@ -61,7 +61,7 @@ const VideoPage = () => {
     });
   };
   const handleRemoveWatchLaterVideo = () => {
-    dispatch(removeWatchLaterVideo(currentVideo));
+    dispatch(removeWatchLaterVideo(currentVideo.id));
     toast.error("You removed the video !", {
       position: toast.POSITION.TOP_RIGHT,
     });
@@ -241,7 +241,7 @@ const VideoPage = () => {
                                 />
                               </Avatar>
                             }
-                            label="Save"
+                            label="unsave"
                           />
                         </>
                       ) : (

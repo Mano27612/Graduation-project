@@ -16,26 +16,28 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post(
         'https://youtube.softscope.net/api/auth/login',
         formData
       );
-
+  
       console.log(response.data); // Do something with the response
-
+  
       if (response.status === 200) {
-        // Replace '/sign-in' with the actual route/path of your sign-in page
-        localStorage.setItem('formData', JSON.stringify(formData));
+        const authToken = response.data.token;
+  
+        // Save the authentication token in localStorage
+        localStorage.setItem('authToken', authToken);
+  
+        // Redirect to the desired page
         window.location.href = '/';
-        
-      
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
         // Handle invalid login credentials, e.g., display an error message to the user
-        toast.error("invalid login credentials !", {
+        toast.error('Invalid login credentials!', {
           position: toast.POSITION.TOP_RIGHT,
         });
       } else {
@@ -43,12 +45,15 @@ const Login = () => {
       }
     }
   };
+  
+  
+  
   return (
     <div className="container-xxl d-flex align-items-center justify-content-center">
       <ToastContainer/>
       <div className="row mt-5">
         <div className="col-12 ">
-          <div className="login-card">
+          <div className="login-card shadowDark">
             <h3 className="text-center mb-3">Sign In</h3>
 
             <form onSubmit={handleSubmit} className="d-flex flex-column gap-30">
@@ -82,7 +87,7 @@ const Login = () => {
                   </button>
                 </div>
               </div>
-              <div className="d-flex align-items-center justify-content-center">
+              <div className="d-flex align-items-center justify-content-center link">
                 Don't have account{" "}
                 <Link className="mx-2 text-primary" to="/sign-up">
                   Sign up

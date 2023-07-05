@@ -87,9 +87,7 @@ const ChannelPlaylist = () => {
                     subscribers {channel?.statistics?.videoCount} video
                   </span>
 
-                  {/* <Button className="mx-0 mx-sm-5 " variant="dark">
-                    Subscribe
-                  </Button> */}
+                  
                   {isSubscribe ? (
                     <>
                       <Button
@@ -113,11 +111,7 @@ const ChannelPlaylist = () => {
                   )}
                 </div>
 
-                {/* <div>
-                <Button className="me-5" variant="dark">
-                  Subscribe
-                </Button>
-              </div> */}
+               
               </div>
             </div>
 
@@ -141,7 +135,7 @@ const ChannelPlaylist = () => {
                   xxl={3}
                 >
                   <Card className="w-100 h-100 carddark">
-                    <Link to={`/channel/${id}/playlists/${id}`}>
+                    <Link to={`/channel/${id}/playlists/${playlist.id}`}>
                       <Card.Img
                         variant="top"
                         src={playlist?.snippet?.thumbnails?.default?.url}

@@ -18,41 +18,48 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post(
         'https://youtube.softscope.net/api/auth/register',
         formData
       );
-
-
+  
       console.log(response.data); // Do something with the response
-
-
-       // Redirect to sign-in page on successful registration
-    if (response.status === 200) {
-      // Replace '/sign-in' with the actual route/path of your sign-in page
-      window.location.href = '/sign-in';
-      
+  
+      if (response.status === 200) {
+        const authToken = response.data.token;
+  
+        // Save the authentication token in localStorage
+        localStorage.setItem('authToken', authToken);
+  
+        // Save the form data in localStorage
+        localStorage.setItem('formData', JSON.stringify(formData));
+  
+        // Redirect to the sign-in page or any other desired page
+        window.location.href = '/sign-in';
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        // Handle validation errors, e.g., display error messages to the user
+        toast.error('Incorrect data!', {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      } else {
+        console.error(error);
+      }
     }
-  } catch (error) {
-    if (error.response && error.response.status === 422) {
-      const validationErrors = error.response.data.errors;
-      // Handle validation errors, e.g., display error messages to the user
-      toast.error("incorrect data !", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    } else {
-      console.error(error);
-    }
-  }
-};
+  };
+  
+  
+
+  
   return (
     <div className="container-xxl  d-flex align-items-center justify-content-center">
       <ToastContainer/>
       <div className="row mt-5">
         <div className="col-12 ">
-          <div className="login-card">
+          <div className="login-card shadowDark">
             <h3 className="text-center mb-3">Sign Up</h3>
 
             <form onSubmit={handleSubmit} className="d-flex flex-column ">
@@ -109,7 +116,7 @@ const Register = () => {
                   </button>
                 </div>
               </div>
-              <div className="d-flex align-items-center justify-content-center">
+              <div className="d-flex align-items-center justify-content-center link">
                 Already have account{" "}
                 <Link className="mx-2 text-primary" to="/sign-in">
                   Sign in

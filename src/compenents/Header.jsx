@@ -24,7 +24,7 @@ function Header() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const isDarkMode = useSelector((state) => state.darkMode);
-
+  const userData = JSON.parse(localStorage.getItem("profileData"));
   const handleDarkModeToggle = () => {
     dispatch(toggleDarkMode());
   };
@@ -46,23 +46,8 @@ function Header() {
     navigat("/search-result");
     setShowInput(!showInput);
   };
-  // const handleSearch = (name) => {
-  //   dispatch(fetchSearchVideos(name));
-  //   navigat("/search-result");
-  // };
-  useEffect(() => {
-    const formData = localStorage.getItem("formData");
-
-    if (formData) {
-      // Parse the stored form data
-      const user = JSON.parse(formData);
-
-      // Show success toast notification
-      toast.success(`Welcom ${user.email} !`, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  }, []);
+ 
+ 
   return (
     <>
       <Container  fluid>
@@ -117,7 +102,7 @@ function Header() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Button className="button" onClick={() => handleSearch(search)} variant="dark">
+            <Button className="button" onClick={() => handleSearchClick(search)} variant="dark">
               Search
             </Button>
           </Col>
@@ -157,7 +142,10 @@ function Header() {
             <Offcanvas placement="end" show={show} onHide={handleClose}>
               <Offcanvas.Header closeButton>
                 <div className="d-block">
-                  <Offcanvas.Title>{user?.email}</Offcanvas.Title>
+                  <Offcanvas.Title>{userData ? userData?.name : user?.email}</Offcanvas.Title>
+                </div>
+                <div className="d-block">
+                  <Offcanvas.Title>{userData ? userData?.email : user?.name}</Offcanvas.Title>
                 </div>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -165,7 +153,7 @@ function Header() {
                   <Link className="text-dark" to={"/user-channel"}>
                     <li className="mb-3 p-2">
                       {" "}
-                      <GrChannel className="fs-2 mx-2" /> Your channel
+                      <GrChannel className="fs-2 mx-2" /> Your Profile
                     </li>
                   </Link>
                   <Link className="text-dark" to={"/setting"}>
