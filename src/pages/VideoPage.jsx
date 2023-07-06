@@ -109,7 +109,7 @@ const VideoPage = () => {
                 <iframe
                   className="w-100 rounded"
                   style={{ height: "480px" }}
-                  src={`https://www.youtube.com/embed/${id}`}
+                  src={`https://www.youtube.com/embed/${id} `}
                   title={currentVideo?.snippet?.title}
                   frameBorder="0"
                   allow="autoplay; encrypted-media"

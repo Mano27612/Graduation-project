@@ -2,9 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { setImageURL } from "../Redux/Slices/ImageSlice";
+import { useDispatch } from "react-redux";
 
 const Setting = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,14 +15,18 @@ const Setting = () => {
     bio: "",
     image: null,
   });
-
+  const [imagePreview, setImagePreview] = useState(null);
   const handleChange = (e) => {
-    if (e.target.type === "file") {
-      setFormData({ ...formData, image: e.target.files[0] });
+    const { name, value, type } = e.target;
+  
+    if (type === "file") {
+      setFormData({ ...formData, [name]: e.target.files[0] });
+      setImagePreview(URL.createObjectURL(e.target.files[0])); // Generate image preview URL
     } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
+      setFormData({ ...formData, [name]: value });
     }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +40,8 @@ const Setting = () => {
     };
   
     try {
+      dispatch(setImageURL(imagePreview));
+
       // Save the form data in localStorage
       localStorage.setItem("profileData", JSON.stringify(formDataToSend));
   
@@ -112,6 +121,7 @@ const Setting = () => {
               </div>
               <Button className="mt-2" type="submit">Update</Button>
             </form>
+            
           </div>
         </div>
       </div>

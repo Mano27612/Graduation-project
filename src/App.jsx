@@ -14,7 +14,8 @@ import Setting from "./pages/Setting";
 import WatchLater from "./pages/WatchLater";
 import ChannelRoutes from "./compenents/ChannelRoutes";
 import MobileFooter from "./compenents/MobileFooter";
-
+import VideoUploadForm from "./pages/UploadVideo";
+import UserVideos from "./pages/UserVideos";
 function App() {
   return (
     <>
@@ -35,6 +36,8 @@ function App() {
           <Route path="/videos-i-liked" element={<VideosILiked />} />
           <Route path="/user-channel" element={<UserChannel />} />
           <Route path="/setting" element={<Setting />} />
+          <Route path="/upload-video" element={<VideoUploadForm />} />
+          <Route path="/user-videos" element={<UserVideos />} />
         </Routes>
         <MobileFooter/>
       </BrowserRouter>
