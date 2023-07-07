@@ -64,8 +64,8 @@ const UserVideos = () => {
               <div>
                 <Button
                   onClick={() => navigate("/setting")}
-                  className="mx-5"
-                  variant="dark"
+                  className="mx-5 Button"
+                 
                 >
                   UPDATE YOUR PROFILE
                 </Button>
@@ -73,8 +73,8 @@ const UserVideos = () => {
               <div>
                 <Button
                   onClick={() => navigate("/upload-video")}
-                  className="mx-5"
-                  variant="dark"
+                  className="mx-5 Button"
+                  
                 >
                   UPLOAD VIDEO
                 </Button>
@@ -83,8 +83,8 @@ const UserVideos = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link to={"/user-videos"}>Videos</Link>
-              <Link>Playlists</Link>
+              <Link className="LINK" to={"/user-videos"}>Videos</Link>
+              <Link className="LINK">Playlists</Link>
             </div>
             <hr />
             <Row className="d-flex">
@@ -127,6 +127,7 @@ const UserVideos = () => {
               </Card>
             </Col>
           ))}
+          {!videos && (<h3 className="logo">No videos Uploaded !</h3>)}
             </Row>
           </Col>
          

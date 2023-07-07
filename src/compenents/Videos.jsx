@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import VideoCard from "./VideoCard";
-import { Badge, Card, Col, Row } from "react-bootstrap";
+import { Badge, Button, Card, Col, Row } from "react-bootstrap";
 import { selectVideosStatus, selectVideos } from "../Redux/Slices/VideoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchVideos } from "../Redux/Slices/VideoSlice";
@@ -36,16 +36,16 @@ const VideoList = () => {
       <Row style={{ marginTop: "70px" }}>
         <Col className=" p-3  mb-3 ">
           {categories?.slice(0, 8).map((category, index) => (
-            <Badge
+            <Button
             style={{cursor:"pointer"}}
               key={index}
               onClick={() => handleCategoryClick(category.snippet.title)}
-              className="p-2 me-3 mt-2  badgeDark"
-              pill
+              className="p-2 me-3 mt-2  Button"
+            
               
             >
               {category?.snippet?.title}
-            </Badge>
+            </Button>
           ))}
         </Col>
       </Row>
@@ -82,7 +82,7 @@ const VideoList = () => {
                       </Card.Title>
 
                       <div className="d-flex gap-2 align-items-center mb-2">
-                        <Link to={`/channel/${video?.snippet?.channelId}`}>
+                        <Link className="LINK" to={`/channel/${video?.snippet?.channelId}`}>
                           <Card.Text className="fw-bold fs-6 mb-0 channeltitle">
                             {video?.snippet?.channelTitle}
                           </Card.Text>

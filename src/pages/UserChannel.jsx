@@ -37,15 +37,15 @@ const UserChannel = () => {
 
                 <div className="mx-2">
                   <>
-                    <h4 className="fw-bold">
+                    <h4 className="fw-bold card-title">
                       {userData?.name ? userData?.name : formData?.name}
                     </h4>
-                    <h5 className="fw-bold">
+                    <h5 className="fw-bold card-title">
                       {userData?.bio ? userData?.bio : formData?.email}
                     </h5>
                     <span>
                       {" "}
-                      <span>
+                      <span className="card-title card-title">
                         {videos?.length ? videos.length : "No videos uploaded"}{" "}
                         videos
                       </span>{" "}
@@ -58,18 +58,18 @@ const UserChannel = () => {
                 <div className="d-block">
                 <Button
                   onClick={() => navigate("/setting")}
-                  className="mx-5"
-                  variant="danger"
+                  className="mx-5 Button"
+                 
                 >
                   UPDATE YOUR PROFILE
-                <CgProfile className="fs-5 text-center mx-2"/>
+                <CgProfile className="fs-5 text-center mx-2 "/>
                 </Button>
               
              
                 <Button
                   onClick={() => navigate("/upload-video")}
-                  className="mx-5"
-                  variant="primary"
+                  className="mx-5 Button"
+                 
                 >
                   UPLOAD VIDEO
                   <FaUpload className=" text-center mx-2"/>
@@ -80,19 +80,19 @@ const UserChannel = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link to={"/user-videos"}>Videos</Link>
-              <Link>Playlists</Link>
+              <Link className="LINK" to={"/user-videos"}>Videos</Link>
+              <Link className="LINK">Playlists</Link>
             </div>
             <hr />
             <Row className="d-flex flex-column align-items-center ">
               <FcUpload  style={{width:"200px", height:"250px"}}/>
-              <h3 className="text-center">Download video</h3>
-              <p className="text-muted text-center">Start sharing your story and connecting with your viewers. Your uploaded videos will appear here.</p>
+              <h3 className="text-center card-title">Download video</h3>
+              <p className="text-muted text-center mb-2 card-title">Start sharing your story and connecting with your viewers. Your uploaded videos will appear here.</p>
               <Button
               style={{width:"150px"}}
                   onClick={() => navigate("/upload-video")}
-                  className="mb-5"
-                  variant="primary"
+                  className="mb-5 Button"
+                 
                 >
                   UPLOAD VIDEO
                   <FaUpload className=" text-center mx-2"/>

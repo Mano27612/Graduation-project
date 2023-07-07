@@ -10,7 +10,7 @@ import { selectVideosStatus, singleVideo } from "../Redux/Slices/VideoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchVideoById } from "../Redux/Slices/VideoSlice";
 import Loading from "./../Utils/Loading";
-import RelatedVideo from "../compenents/RelatedVideo";
+// import RelatedVideo from "../compenents/RelatedVideo";
 import { addLikedVideo, removeLikedVideo } from "../Redux/Slices/LikedVideos";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -91,11 +91,11 @@ const VideoPage = () => {
     });
   };
   const likeButtonClassName = isLiked
-    ? "fs-3 chip-action text-light p-1 bg-dark button"
-    : "fs-3 chip-action button";
+    ? "fs-3 chip-action text-warning p-1 bg-dark button "
+    : "fs-3 chip-action button Button";
   const saveButtonClassName = isSaved
-    ? "fs-3 chip-action text-light p-1 bg-dark button"
-    : "fs-3 chip-action button";
+    ? "fs-3 chip-action text-warning p-1 bg-dark button "
+    : "fs-3 chip-action button Button";
   return (
     <>
       <Container fluid style={{ marginTop: "90px" }}>
@@ -115,7 +115,7 @@ const VideoPage = () => {
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                 />
-                <h2 className="mt-2">{currentVideo?.snippet?.title}</h2>
+                <h2 className="mt-2 card-title">{currentVideo?.snippet?.title}</h2>
 
                 {/* here the part of channel name and buttons that related for each video */}
                 <Row className="mb-4 mt-2">
@@ -131,21 +131,21 @@ const VideoPage = () => {
                     <div className="gap-2 d-flex align-items-center">
                       <Avatar
                         alt="Travis Howard"
-                        src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        src={currentVideo?.snippet?.thumbnails?.default?.url}
                       />
                       <div className="d-flex flex-column">
                         <Link
                           to={`/channel/${currentVideo?.snippet?.channelId}`}
-                          className="text-dark text"
+                          className="text-dark text LINK"
                         >
-                          <h6 className="mb-0 fw-bold link text">
+                          <h6 className="mb-0 fw-bold  LINK">
                             {currentVideo?.snippet?.channelTitle}
                           </h6>
                         </Link>
                         <span className="mb-0 text">
                           {" "}
                           {formatNumber(
-                            channel?.statistics?.subscriberCount
+                            currentVideo?.statistics?.viewCount
                           )}{" "}
                         </span>
                       </div>
@@ -153,13 +153,13 @@ const VideoPage = () => {
                     {/* <Button variant="dark">Subscribe</Button> */}
                     {isSubscribe ? (
                       <>
-                        <Button onClick={removeSubscribe} variant="danger">
+                        <Button className="button bg-warning" onClick={removeSubscribe} >
                           Subscribed
                         </Button>
                       </>
                     ) : (
                       <>
-                        <Button className="button" onClick={addSubscribe} variant="dark">
+                        <Button className="Button button" onClick={addSubscribe} variant="dark">
                           Subscribe
                         </Button>
                       </>
@@ -176,10 +176,10 @@ const VideoPage = () => {
                   >
                     <Stack direction="row" spacing={1}>
                       <Chip
-                      className="button"
+                      className="Button button text-white"
                         avatar={
                           <Avatar>
-                            <IoMdShareAlt className="fs-3 chip-action button" />
+                            <IoMdShareAlt className="fs-3  button Button" />
                           </Avatar>
                         }
                         label="share"
@@ -187,7 +187,7 @@ const VideoPage = () => {
                       {isLiked ? (
                         <>
                           <Chip
-                          className="button"
+                          className="Button button text-white"
                             avatar={
                               <Avatar>
                                 <AiOutlineLike
@@ -204,7 +204,7 @@ const VideoPage = () => {
                       ) : (
                         <>
                           <Chip
-                            className="button"
+                            className="Button button text-white"
                             avatar={
                               <Avatar>
                                 <AiOutlineLike
@@ -221,10 +221,10 @@ const VideoPage = () => {
                       )}
 
                       <Chip
-                      className="button"
+                      className="Button button text-white"
                         avatar={
                           <Avatar>
-                            <AiOutlineDislike className="fs-3 chip-action" />
+                            <AiOutlineDislike className="fs-3 Button" />
                           </Avatar>
                         }
                         label="dislike"
@@ -232,7 +232,7 @@ const VideoPage = () => {
                       {isSaved ? (
                         <>
                           <Chip
-                          className="button"
+                          className="Button button text-white"
                             avatar={
                               <Avatar>
                                 <BiSave
@@ -247,7 +247,7 @@ const VideoPage = () => {
                       ) : (
                         <>
                           <Chip
-                          className="button"
+                          className="Button button text-white"
                             avatar={
                               <Avatar>
                                 <BiSave
@@ -270,7 +270,7 @@ const VideoPage = () => {
                     <Accordion.Item  eventKey="0">
                       <Accordion.Header  >
                         <div>
-                          <p>
+                          <p className="card-title">
                             {" "}
                             {formatNumber(
                               currentVideo?.statistics?.viewCount
@@ -283,10 +283,10 @@ const VideoPage = () => {
                               currentVideo?.snippet?.publishedAt
                             ).toLocaleTimeString()}
                           </p>
-                          <p>see description </p>
+                          <p className="card-title">see description </p>
                         </div>
                       </Accordion.Header>
-                      <Accordion.Body>
+                      <Accordion.Body className="card-title">
                         {currentVideo?.snippet?.description}
                       </Accordion.Body>
                     </Accordion.Item>
@@ -299,9 +299,9 @@ const VideoPage = () => {
                     <Accordion defaultActiveKey="0">
                       <Accordion.Item  eventKey="0">
                         <Accordion.Header>
-                          <h6>see comments</h6>
+                          <h6 className="card-title">see comments</h6>
                         </Accordion.Header>
-                        <Accordion.Body>
+                        <Accordion.Body className="card-title">
                           {comments.map((comment, index) => {
                             return (
                               <>
@@ -319,9 +319,9 @@ const VideoPage = () => {
           )}
           {/* here the part of related videos on the other side of the page */}
 
-          <Col xs={12} sm={12} md={12} lg={5} xl={5} xxl={5}>
+          {/* <Col xs={12} sm={12} md={12} lg={5} xl={5} xxl={5}>
             <RelatedVideo />
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </>

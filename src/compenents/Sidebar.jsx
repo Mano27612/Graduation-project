@@ -19,11 +19,11 @@ useEffect(() => {
   const channel = channels.map((channel, index) => {
     return (
       <>
-       <Link className="link text  text-truncate w-100" to={`/channel/${channel?.snippet?.channelId ? channel?.snippet?.channelId : channel?.id}`}>
+       <Link className=" text-truncate w-100" to={`/channel/${channel?.snippet?.channelId ? channel?.snippet?.channelId : channel?.id}`}>
        
        <div
           key={index}
-          className="d-flex w-100  align-items-center gap-2 mb-3 p-2 rounded sidebar-item"
+          className="d-flex w-100   align-items-center gap-2 mb-3 p-2 rounded sidebar-item"
         >
           <Avatar
             sx={{ width: 24, height: 24 }}
@@ -40,7 +40,7 @@ useEffect(() => {
   return (
     <>
       <div className="sidebar carddark">
-        <Link className={currentPath === "/" ? "active activeDark" : "link text "} to={"/"}>
+        <Link className={currentPath === "/" ? "active activeDark " : "link text "} to={"/"}>
           <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
             <AiFillHome className="fs-5" />
             <p className="mb-0">Home Page</p>

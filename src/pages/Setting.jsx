@@ -67,10 +67,10 @@ const Setting = () => {
       <div className="row mt-5">
         <div className="col-12">
           <div className="mt-5 shadowDark">
-            <h3 className="bg-dark text-white p-2 text-center mb-2 mt-2">Update your profile</h3>
-            <form className="form-control" onSubmit={handleSubmit}>
+            <h3 className="bg-dark text-white p-2 text-center mb-2 mt-2 Button">Update your profile</h3>
+            <form className="form-control p-2" onSubmit={handleSubmit}>
               <div>
-                <label>Name:</label>
+                <label className="card-title">Name:</label>
                 <input
 
                 className="form-control"
@@ -81,7 +81,7 @@ const Setting = () => {
                 />
               </div>
               <div>
-                <label>Email:</label>
+                <label className="card-title">Email:</label>
                 <input
                 className="form-control"
                   name="email"
@@ -91,7 +91,7 @@ const Setting = () => {
                 />
               </div>
               <div>
-                <label>Password:</label>
+                <label className="card-title">Password:</label>
                 <input
                 className="form-control"
                   name="password"
@@ -101,7 +101,7 @@ const Setting = () => {
                 />
               </div>
               <div>
-                <label>Bio:</label>
+                <label className="card-title">Bio:</label>
                 <textarea
                 className="form-control"
                   name="bio"
@@ -110,7 +110,7 @@ const Setting = () => {
                 ></textarea>
               </div>
               <div>
-                <label>Image:</label>
+                <label className="card-title">Image:</label>
                 <input
                 className="form-control"
                   name="image"
@@ -119,7 +119,7 @@ const Setting = () => {
                   accept="image/*"
                 />
               </div>
-              <Button className="mt-2" type="submit">Update</Button>
+              <Button className="mt-2 Button" type="submit">Update</Button>
             </form>
             
           </div>
