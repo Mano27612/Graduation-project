@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: 'Arimo', sans-serif;
   font-family: 'Rubik', sans-serif;
+  color:rgb(46, 89, 46);
 }
 .header-search {
   width: 100%;
@@ -46,7 +47,8 @@ li:hover {
   cursor: pointer;
 }
 .sidebar .sidebar-item:hover {
-  background-color: rgb(162, 7, 7);
+  /* background-color: rgb(162, 7, 7); */
+  background-color: #cbced1;
   color: rgb(255, 255, 255);
   transition: 0.2s;
 }
@@ -73,6 +75,7 @@ li:hover {
 .login-card {
   width: 430px;
   height: 600px;
+  color:rgb(46, 89, 46);
   background-color: #ecf0f3;
   padding: 50px 25px 25px 25px;
   border-radius: 40px;
@@ -110,12 +113,12 @@ li:hover {
   font-weight: 700;
   color: #fff;
   text-align: center;
-  background-color: #02c8db;
+  background-color:rgb(46, 89, 46);
   transition: all 0.5s;
   box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
 }
 .submit-btn:hover {
-  background-color: #50e5b9;
+  background-color:rgb(46, 89, 46);
 }
 
 .active {
