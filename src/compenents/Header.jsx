@@ -58,16 +58,16 @@ function Header() {
           {/* the part of logo  */}
           <Col className="d-flex align-items-center">
             <Link to={"/"} className="d-flex align-items-center  w-50 gap-2">
-              {/* <img
+              <img
                 style={{ width: "50px", height:"100%" }}
-                src="/public/assets/logo.png"
+                src="/public/assets/loggo.png"
                 alt="logo"
-              /> */}
-              <BsYoutube
+              />
+              {/* <BsYoutube
                 style={{ fontSize: "40px" }}
                 className="text-danger "
-              />
-              <h4 className=" mb-0 text">Zomord</h4>
+              /> */}
+              <h4 className="logo mb-0 text">Zomord</h4>
             </Link>
           </Col>
           {/* the part of input search with small screens */}
@@ -109,9 +109,9 @@ function Header() {
               onChange={(e) => setSearch(e.target.value)}
             />
             <Button
-              className="button"
+              className="button Button"
               onClick={() => handleSearchClick(search)}
-              variant="dark"
+              // variant="dark"
             >
               Search
             </Button>
@@ -120,7 +120,7 @@ function Header() {
           <Col className="d-flex align-items-center justify-content-center">
             <MdDarkMode
               style={{ fontSize: "30px" }}
-              className="link text"
+              className=" card-title"
               onClick={handleDarkModeToggle}
             />
 
@@ -143,8 +143,8 @@ function Header() {
               <>
                 <Button
                   href="/sign-in"
-                  className="mx-1 button"
-                  variant="outline-danger"
+                  className="mx-1 button Button"
+                  // variant="outline-danger"
                 >
                   Sign in
                 </Button>
@@ -155,12 +155,12 @@ function Header() {
               <Offcanvas.Header closeButton>
              <div className="d-block">
              <div className="d-block">
-                  <Offcanvas.Title>
+                  <Offcanvas.Title className="card-title">
                     {userProfile ? userProfile?.name : userData?.email}
                   </Offcanvas.Title>
                 </div>
                 <div className="d-block">
-                  <Offcanvas.Title>
+                  <Offcanvas.Title className="card-title">
                     {userProfile ? userProfile?.email : userData?.name}
                   </Offcanvas.Title>
                 </div>
@@ -168,13 +168,13 @@ function Header() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <ul>
-                  <Link className="text-dark" to={"/user-channel"}>
+                  <Link className="LINK " to={"/user-channel"}>
                     <li className="mb-3 p-2">
                       {" "}
                       <GrChannel className="fs-2 mx-2" /> Your Profile
                     </li>
                   </Link>
-                  <Link className="text-dark" to={"/setting"}>
+                  <Link className="LINK " to={"/setting"}>
                     <li className="mb-3 p-2">
                       {" "}
                       <FiSettings className="fs-2 mx-2" /> Settings

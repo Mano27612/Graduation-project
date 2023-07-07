@@ -81,13 +81,13 @@ const ChannelVideos = () => {
                   
                   {isSubscribe ? (
                       <>
-                        <Button className="me-5 mx-sm-5" onClick={removeSubscribe} variant="danger">
+                        <Button className="me-5 mx-sm-5 Button" onClick={removeSubscribe} variant="danger">
                           Subscribed
                         </Button>
                       </>
                     ) : (
                       <>
-                        <Button className="me-5 mx-sm-5 button" onClick={addSubscribe} variant="dark">
+                        <Button className="me-5 mx-sm-5 button Button" onClick={addSubscribe} variant="dark">
                           Subscribe
                         </Button>
                       </>
@@ -99,8 +99,8 @@ const ChannelVideos = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link className="text"  to={`/channel/${id}/videos`}>Videos</Link>
-              <Link className="text" to={`/channel/${id}/playlists`}>Playlists</Link>
+              <Link className="text LINK"  to={`/channel/${id}/videos`}>Videos</Link>
+              <Link className="text LINK" to={`/channel/${id}/playlists`}>Playlists</Link>
             </div>
             <hr />
 
@@ -108,7 +108,7 @@ const ChannelVideos = () => {
               {videos?.map((video, index) => (
                   <Col key={index} className="mb-4" xs={12} sm={6} md={6} lg={4} xl={4} xxl={3}>
                   <Card className="w-100 h-100 carddark">
-                    <Link to={`/videos/${video?.id.videoId}`}>
+                    <Link className="LINK" to={`/videos/${video?.id.videoId}`}>
                       <Card.Img
                         variant="top"
                         src={video?.snippet?.thumbnails?.default?.url}
@@ -127,7 +127,7 @@ const ChannelVideos = () => {
                         </Card.Title>
           
                         <div className="d-flex gap-2 align-items-center mb-2">
-                          <Link to={`/channel/${video?.snippet?.channelId}`}>
+                          <Link className="LINK" to={`/channel/${video?.snippet?.channelId}`}>
                             <Card.Text className="fw-bold fs-6 mb-0 channeltitle">
                               {video?.snippet?.channelTitle}
                             </Card.Text>

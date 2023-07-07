@@ -60,7 +60,7 @@ const Register = () => {
       <div className="row mt-5">
         <div className="col-12 ">
           <div className="login-card shadowDark">
-            <h3 className="text-center mb-3">Sign Up</h3>
+            <h3 className="text-center mb-3 card-title">Sign Up</h3>
 
             <form onSubmit={handleSubmit} className="d-flex flex-column ">
               <div className="name">
@@ -111,12 +111,12 @@ const Register = () => {
 
               <div>
                 <div className="mt-3 d-flex align-items-center justify-content-center gap-15">
-                  <button type="submit" className=" mb-4 submit-btn">
+                  <button type="submit" className=" mb-4 submit-btn Button">
                     Sign Up
                   </button>
                 </div>
               </div>
-              <div className="d-flex align-items-center justify-content-center link">
+              <div className="d-flex align-items-center justify-content-center card-title">
                 Already have account{" "}
                 <Link className="mx-2 text-primary" to="/sign-in">
                   Sign in

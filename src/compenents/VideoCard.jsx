@@ -15,7 +15,7 @@ const VideoCard = ({ video }) => {
               src={video?.snippet?.thumbnails?.default?.url}
             />
           </Link>
-          <Card.Body className="d-flex w-100">
+          <Card.Body className="d-flex w-100 card-body">
             <div style={{ width: "15%" }} className="me-2">
               <Avatar
                 alt="Travis Howard"
@@ -23,13 +23,13 @@ const VideoCard = ({ video }) => {
               />
             </div>
             <div style={{ width: "85%" }}>
-              <Card.Title className="fw-bold fs-5 ">
+              <Card.Title className="card-title  ">
                 {video?.snippet?.title}
               </Card.Title>
 
               <div className="d-flex gap-2 align-items-center mb-2">
-                <Link to={`/channel/${video?.snippet?.channelId}`}>
-                  <Card.Text className="fw-bold fs-6 mb-0 channeltitle">
+                <Link className="LINK" to={`/channel/${video?.snippet?.channelId}`}>
+                  <Card.Text className="fs-6 mb-0 channeltitle">
                     {video?.snippet?.channelTitle}
                   </Card.Text>
                 </Link>

@@ -79,9 +79,9 @@ const ChannelPage = () => {
                   {isSubscribe ? (
                     <>
                       <Button
-                        className="mx-0 mx-sm-5 "
+                        className="mx-0 mx-sm-5 Button button"
                         onClick={removeSubscribe}
-                        variant="danger"
+                       
                       >
                         Subscribed
                       </Button>
@@ -89,7 +89,7 @@ const ChannelPage = () => {
                   ) : (
                     <>
                       <Button
-                        className="mx-0 mx-sm-5 button"
+                        className="mx-0 mx-sm-5 button Button"
                         onClick={addSubscribe}
                         variant="dark"
                       >
@@ -103,8 +103,8 @@ const ChannelPage = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link className="text" to={`/channel/${id}/videos`}>Videos</Link>
-              <Link className="text" to={`/channel/${id}/playlists`}>Playlists</Link>
+              <Link className="text LINK" to={`/channel/${id}/videos`}>Videos</Link>
+              <Link className="text LINK" to={`/channel/${id}/playlists`}>Playlists</Link>
             </div>
             <hr />
           </Col>

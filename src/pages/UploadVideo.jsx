@@ -129,7 +129,7 @@ const VideoUploadForm = () => {
                 </select>
               </div>
               <div className="mb-5">
-                <Button type="submit">Upload</Button>
+                <Button className="Button" type="submit">Upload</Button>
               </div>
             </form>
             <img

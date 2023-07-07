@@ -91,9 +91,9 @@ const ChannelPlaylist = () => {
                   {isSubscribe ? (
                     <>
                       <Button
-                        className="me-5 mx-sm-5"
+                        className="me-5 mx-sm-5 Button"
                         onClick={removeSubscribe}
-                        variant="danger"
+                        
                       >
                         Subscribed
                       </Button>
@@ -101,7 +101,7 @@ const ChannelPlaylist = () => {
                   ) : (
                     <>
                       <Button
-                        className="me-5 mx-sm-5 button"
+                        className="me-5 mx-sm-5 button Button"
                         onClick={addSubscribe}
                         variant="dark"
                       >
@@ -117,8 +117,8 @@ const ChannelPlaylist = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link className="text" to={`/channel/${id}/videos`}>Videos</Link>
-              <Link className="text" to={`/channel/${id}/playlists`}>Playlists</Link>
+              <Link className="text Link" to={`/channel/${id}/videos`}>Videos</Link>
+              <Link className="text Link" to={`/channel/${id}/playlists`}>Playlists</Link>
             </div>
             <hr />
 
@@ -135,7 +135,7 @@ const ChannelPlaylist = () => {
                   xxl={3}
                 >
                   <Card className="w-100 h-100 carddark">
-                    <Link to={`/channel/${id}/playlists/${playlist.id}`}>
+                    <Link className="LINK" to={`/channel/${id}/playlists/${playlist.id}`}>
                       <Card.Img
                         variant="top"
                         src={playlist?.snippet?.thumbnails?.default?.url}
@@ -154,7 +154,7 @@ const ChannelPlaylist = () => {
                         </Card.Title>
 
                         <div className="d-flex gap-2 align-items-center mb-2">
-                          <Link to={`/channel/${playlist?.snippet?.channelId}`}>
+                          <Link className="LINK" to={`/channel/${playlist?.snippet?.channelId}`}>
                             <Card.Text className="fw-bold fs-6 mb-0 channeltitle">
                               {playlist?.snippet?.channelTitle}
                             </Card.Text>
