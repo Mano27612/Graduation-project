@@ -54,7 +54,7 @@ function Header() {
     <>
       <Container fluid>
         <ToastContainer />
-        <Row className="header carddark shadowDark p-3 d-flex justify-content-between">
+        <Row className="header carddark  p-3 d-flex justify-content-between">
           {/* the part of logo  */}
           <Col className="d-flex align-items-center">
             <Link to={"/"} className="d-flex align-items-center  w-50 gap-2">
@@ -120,7 +120,7 @@ function Header() {
           <Col className="d-flex align-items-center justify-content-center">
             <MdDarkMode
               style={{ fontSize: "30px" }}
-              className=" card-title"
+              className=" card-title text"
               onClick={handleDarkModeToggle}
             />
 
@@ -171,7 +171,7 @@ function Header() {
                   <Link className="LINK " to={"/user-channel"}>
                     <li className="mb-3 p-2">
                       {" "}
-                      <GrChannel className="fs-2 mx-2" /> Your Profile
+                      <GrChannel className="fs-2 mx-2 LINK" /> Your Profile
                     </li>
                   </Link>
                   <Link className="LINK " to={"/setting"}>
@@ -180,7 +180,7 @@ function Header() {
                       <FiSettings className="fs-2 mx-2" /> Settings
                     </li>
                   </Link>
-                  <li onClick={handleLogOut} className="mb-3 p-2">
+                  <li onClick={handleLogOut} className="mb-3 p-2 LINK">
                     {" "}
                     <BiLogOut className="fs-2 mx-2" /> logout
                   </li>

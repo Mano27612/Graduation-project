@@ -122,13 +122,13 @@ const ChannelVideos = () => {
                         />
                       </div>
                       <div style={{ width: "85%" }}>
-                        <Card.Title className="fw-bold fs-5 ">
+                        <Card.Title className="fw-bold fs-5 text">
                           {video?.snippet?.title}
                         </Card.Title>
           
                         <div className="d-flex gap-2 align-items-center mb-2">
                           <Link className="LINK" to={`/channel/${video?.snippet?.channelId}`}>
-                            <Card.Text className="fw-bold fs-6 mb-0 channeltitle">
+                            <Card.Text className="fw-bold fs-6 mb-0 text">
                               {video?.snippet?.channelTitle}
                             </Card.Text>
                           </Link>

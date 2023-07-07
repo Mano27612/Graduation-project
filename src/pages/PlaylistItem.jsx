@@ -45,13 +45,13 @@ const PlaylistItem = () => {
                   />
                 </div>
                 <div style={{ width: "85%" }}>
-                  <Card.Title className="fw-bold fs-5">
+                  <Card.Title className="fw-bold fs-5 text">
                     {item?.snippet?.title}
                   </Card.Title>
 
                   <div className="d-flex gap-2 align-items-center mb-2">
                     <Link to={`/channel/${item?.snippet?.channelId}`}>
-                      <Card.Text className="fw-bold fs-6 mb-0">
+                      <Card.Text className="fw-bold fs-6 mb-0 LINK text">
                         {item?.snippet?.channelTitle}
                       </Card.Text>
                     </Link>

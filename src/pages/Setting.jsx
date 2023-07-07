@@ -67,7 +67,7 @@ const Setting = () => {
       <div className="row mt-5">
         <div className="col-12">
           <div className="mt-5 shadowDark">
-            <h3 className="bg-dark text-white p-2 text-center mb-2 mt-2 Button">Update your profile</h3>
+            <h3 className="bg-dark  p-2 text-center mb-2 mt-2 Button">Update your profile</h3>
             <form className="form-control p-2" onSubmit={handleSubmit}>
               <div>
                 <label className="card-title">Name:</label>

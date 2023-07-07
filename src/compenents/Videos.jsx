@@ -40,7 +40,7 @@ const VideoList = () => {
             style={{cursor:"pointer"}}
               key={index}
               onClick={() => handleCategoryClick(category.snippet.title)}
-              className="p-2 me-3 mt-2  Button"
+              className="p-2 me-3 mt-2  Button Button-Catg"
             
               
             >

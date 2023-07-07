@@ -36,9 +36,9 @@ const SearchPage = () => {
                           </Link>
                         </div>
                         <div className="h-100 col-12 col-md-8">
-                          <Card.Body className="d-flex w-100 h-100 mx-2">
+                          <Card.Body className="d-flex w-100 h-100 mx-2 card-body-trans">
                             <div >
-                              <Card.Title className="fw-bold fs-5">
+                              <Card.Title className="fw-bold fs-5 text">
                                 {video?.snippet?.title}
                               </Card.Title>
 

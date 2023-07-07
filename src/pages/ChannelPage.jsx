@@ -70,7 +70,7 @@ const ChannelPage = () => {
                 />
 
                 <div className="mx-2 d-block d-xs-flex align-items-center justify-content-between">
-                  <h4 className="fw-bold">{channel?.snippet?.title}</h4>
+                  <h4 className="fw-bold text">{channel?.snippet?.title}</h4>
                   <span>
                     {formatNumber(channel?.statistics?.subscriberCount)}{" "}
                     subscribers {channel?.statistics?.videoCount} video

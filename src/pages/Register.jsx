@@ -60,7 +60,7 @@ const Register = () => {
       <div className="row mt-5">
         <div className="col-12 ">
           <div className="login-card shadowDark">
-            <h3 className="text-center mb-3 card-title">Sign Up</h3>
+            <h3 className="text-center mb-3 card-title text">Sign Up</h3>
 
             <form onSubmit={handleSubmit} className="d-flex flex-column ">
               <div className="name">
@@ -116,7 +116,7 @@ const Register = () => {
                   </button>
                 </div>
               </div>
-              <div className="d-flex align-items-center justify-content-center card-title">
+              <div className="d-flex align-items-center justify-content-center card-title text">
                 Already have account{" "}
                 <Link className="mx-2 text-primary" to="/sign-in">
                   Sign in

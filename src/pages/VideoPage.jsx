@@ -115,7 +115,7 @@ const VideoPage = () => {
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                 />
-                <h2 className="mt-2 card-title">{currentVideo?.snippet?.title}</h2>
+                <h2 className="mt-2 card-title text">{currentVideo?.snippet?.title}</h2>
 
                 {/* here the part of channel name and buttons that related for each video */}
                 <Row className="mb-4 mt-2">
@@ -138,7 +138,7 @@ const VideoPage = () => {
                           to={`/channel/${currentVideo?.snippet?.channelId}`}
                           className="text-dark text LINK"
                         >
-                          <h6 className="mb-0 fw-bold  LINK">
+                          <h6 className="mb-0 fw-bold  LINK text">
                             {currentVideo?.snippet?.channelTitle}
                           </h6>
                         </Link>
@@ -176,10 +176,10 @@ const VideoPage = () => {
                   >
                     <Stack direction="row" spacing={1}>
                       <Chip
-                      className="Button button text-white"
+                      className="Button text textdark "
                         avatar={
                           <Avatar>
-                            <IoMdShareAlt className="fs-3  button Button" />
+                            <IoMdShareAlt className="fs-3   Button " />
                           </Avatar>
                         }
                         label="share"
@@ -187,7 +187,7 @@ const VideoPage = () => {
                       {isLiked ? (
                         <>
                           <Chip
-                          className="Button button text-white"
+                          className="Button text textdark"
                             avatar={
                               <Avatar>
                                 <AiOutlineLike
@@ -204,7 +204,7 @@ const VideoPage = () => {
                       ) : (
                         <>
                           <Chip
-                            className="Button button text-white"
+                            className="Button text textdark"
                             avatar={
                               <Avatar>
                                 <AiOutlineLike
@@ -221,7 +221,7 @@ const VideoPage = () => {
                       )}
 
                       <Chip
-                      className="Button button text-white"
+                      className="Button text textdark"
                         avatar={
                           <Avatar>
                             <AiOutlineDislike className="fs-3 Button" />
@@ -232,7 +232,7 @@ const VideoPage = () => {
                       {isSaved ? (
                         <>
                           <Chip
-                          className="Button button text-white"
+                          className="Button text textdark"
                             avatar={
                               <Avatar>
                                 <BiSave
@@ -247,7 +247,7 @@ const VideoPage = () => {
                       ) : (
                         <>
                           <Chip
-                          className="Button button text-white"
+                          className="Button text textdark"
                             avatar={
                               <Avatar>
                                 <BiSave
