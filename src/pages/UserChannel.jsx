@@ -37,15 +37,15 @@ const UserChannel = () => {
 
                 <div className="mx-2">
                   <>
-                    <h4 className="fw-bold card-title">
+                    <h4 className="fw-bold card-title text">
                       {userData?.name ? userData?.name : formData?.name}
                     </h4>
-                    <h5 className="fw-bold card-title">
+                    <h5 className="fw-bold card-title text">
                       {userData?.bio ? userData?.bio : formData?.email}
                     </h5>
                     <span>
                       {" "}
-                      <span className="card-title card-title">
+                      <span className="card-title card-title text">
                         {videos?.length ? videos.length : "No videos uploaded"}{" "}
                         videos
                       </span>{" "}
@@ -80,13 +80,13 @@ const UserChannel = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link className="LINK" to={"/user-videos"}>Videos</Link>
-              <Link className="LINK">Playlists</Link>
+              <Link className="LINK text" to={"/user-videos"}>Videos</Link>
+              <Link className="LINK text">Playlists</Link>
             </div>
             <hr />
             <Row className="d-flex flex-column align-items-center ">
               <FcUpload  style={{width:"200px", height:"250px"}}/>
-              <h3 className="text-center card-title">Download video</h3>
+              <h3 className="text-center card-title text">Download video</h3>
               <p className="text-muted text-center mb-2 card-title">Start sharing your story and connecting with your viewers. Your uploaded videos will appear here.</p>
               <Button
               style={{width:"150px"}}

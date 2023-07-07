@@ -89,7 +89,7 @@ const VideoUploadForm = () => {
                 />
               </div>
               <div className="name">
-                <label className="mx-3 text-danger" htmlFor="videoFile">
+                <label className="mx-3 LINK text" htmlFor="videoFile">
                   Video File:
                 </label>
                 <input
@@ -102,7 +102,7 @@ const VideoUploadForm = () => {
                 />
               </div>
               <div className="name">
-                <label className="mx-3 text-danger" htmlFor="thumbnailFile">
+                <label className="mx-3 LINK text" htmlFor="thumbnailFile">
                   Thumbnail File:
                 </label>
                 <input
@@ -128,15 +128,17 @@ const VideoUploadForm = () => {
                   <option value="private">private</option>
                 </select>
               </div>
-              <div className="mb-5">
+             
+            </form>
+            <div className="mb-5 mx-4">
                 <Button className="Button" type="submit">Upload</Button>
               </div>
-            </form>
             <img
               className="w-50"
               src="https://storyxpress.co/static-app/img/upload_illustration.svg"
               alt=""
             />
+           
           </div>
         </div>
       </div>

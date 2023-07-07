@@ -149,20 +149,20 @@ const ChannelPlaylist = () => {
                         />
                       </div>
                       <div style={{ width: "85%" }}>
-                        <Card.Title className="fw-bold fs-5">
+                        <Card.Title className="fw-bold fs-5 text">
                           {playlist?.snippet?.title}
                         </Card.Title>
 
                         <div className="d-flex gap-2 align-items-center mb-2">
                           <Link className="LINK" to={`/channel/${playlist?.snippet?.channelId}`}>
-                            <Card.Text className="fw-bold fs-6 mb-0 channeltitle">
+                            <Card.Text className="fw-bold fs-6 mb-0 text">
                               {playlist?.snippet?.channelTitle}
                             </Card.Text>
                           </Link>
                         </div>
                         <Card.Text className="text-muted fs-6">
                           {playlist?.snippet?.publishedAt}
-                          <span className="mx-1 channeltitle">
+                          <span className="mx-1 ">
                             {formatNumber(playlist?.statistics?.viewCount)}{" "}
                             Views
                           </span>

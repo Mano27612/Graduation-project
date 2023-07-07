@@ -36,9 +36,9 @@ const WatchLater = () => {
                   </Link>
                 </div>
                 <div className="h-100 col-12 col-md-8">
-                  <Card.Body className="d-flex w-100 h-100 mx-2">
+                  <Card.Body className="d-flex w-100 h-100 mx-2 card-body-trans">
                     <div >
-                      <Card.Title className="fw-bold fs-5">
+                      <Card.Title className="fw-bold fs-5 text">
                         {video?.snippet?.title}
                       </Card.Title>
 
@@ -60,7 +60,7 @@ const WatchLater = () => {
                               src={video?.snippet?.thumbnails?.default?.url}
                             />
 
-                            <span className="mx-2 link text">{video?.snippet?.channelTitle}</span>
+                            <span className="mx-2 LINK text">{video?.snippet?.channelTitle}</span>
                           </Card.Text>
                         </Link>
                       </div>

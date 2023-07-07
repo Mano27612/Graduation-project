@@ -58,8 +58,8 @@ const Login = () => {
       <ToastContainer/>
       <div className="row mt-5">
         <div className="col-12 ">
-          <div className="login-card shadowDark">
-            <h3 className="text-center mb-3 card-title">Sign In</h3>
+          <div className="login-card  shadowDark">
+            <h3 className="text-center text mb-3 card-title">Sign In</h3>
 
             <form onSubmit={handleSubmit} className="d-flex flex-column gap-30">
               <div className="email">
@@ -92,7 +92,7 @@ const Login = () => {
                   </button>
                 </div>
               </div>
-              <div className="d-flex align-items-center justify-content-center  card-title">
+              <div className="d-flex align-items-center justify-content-center text card-title">
                 Don't have an account{" "}
                 <Link className="mx-2 text-primary" to="/sign-up">
                   Sign up

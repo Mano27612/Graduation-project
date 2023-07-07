@@ -83,8 +83,8 @@ const UserVideos = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link className="LINK" to={"/user-videos"}>Videos</Link>
-              <Link className="LINK">Playlists</Link>
+              <Link className="LINK text" to={"/user-videos"}>Videos</Link>
+              <Link className="LINK text">Playlists</Link>
             </div>
             <hr />
             <Row className="d-flex">
@@ -127,7 +127,7 @@ const UserVideos = () => {
               </Card>
             </Col>
           ))}
-          {!videos && (<h3 className="logo">No videos Uploaded !</h3>)}
+          {!videos && (<h3 className="logo text">No videos Uploaded !</h3>)}
             </Row>
           </Col>
          

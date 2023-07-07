@@ -23,12 +23,12 @@ const VideoCard = ({ video }) => {
               />
             </div>
             <div style={{ width: "85%" }}>
-              <Card.Title className="card-title  ">
+              <Card.Title className="card-title  text">
                 {video?.snippet?.title}
               </Card.Title>
 
               <div className="d-flex gap-2 align-items-center mb-2">
-                <Link className="LINK" to={`/channel/${video?.snippet?.channelId}`}>
+                <Link className="LINK text" to={`/channel/${video?.snippet?.channelId}`}>
                   <Card.Text className="fs-6 mb-0 channeltitle">
                     {video?.snippet?.channelTitle}
                   </Card.Text>

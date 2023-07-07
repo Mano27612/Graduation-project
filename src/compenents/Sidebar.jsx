@@ -40,7 +40,7 @@ useEffect(() => {
   return (
     <>
       <div className="sidebar carddark">
-        <Link className={currentPath === "/" ? "active activeDark " : "link text "} to={"/"}>
+        <Link className={currentPath === "/" ? "active  activeDark" : " text "} to={"/"}>
           <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
             <AiFillHome className="fs-5" />
             <p className="mb-0">Home Page</p>
