@@ -49,10 +49,11 @@ function Header() {
     navigat("/search-result");
     setShowInput(!showInput);
   };
-
+ 
+  
   return (
     <>
-      <Container fluid>
+      <Container fluid >
         <ToastContainer />
         <Row className="header carddark  p-3 d-flex justify-content-between">
           {/* the part of logo  */}
@@ -76,6 +77,8 @@ function Header() {
             <AiOutlineSearch
               className="fs-1 link text"
               onClick={() => handleSearchClick(search)}
+            
+             
             />
             {showInput && (
               <div className="d-flex gap-2">

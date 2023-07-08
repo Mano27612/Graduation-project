@@ -9,7 +9,7 @@ import CategoriesReducer from "./Slices/Categories";
 import SearchReduser from "./Slices/SearchSlice";
 import ChannelVideosReducer from "./Slices/ChannelVideosSlice";
 import ChannelPlaylistReducer from "./Slices/ChannelPlaylistSlice";
-import SubscribtionReducer from "./Slices/SubscribtionVideos";
+import SubscribtionVideosReducer from "./Slices/SubscribtionVideos";
 import commentReducer from "./Slices/CommentSlice";
 import darkModeReducer from "./Slices/DarkMode";
 import userVideoReducer from "./Slices/UserVideos";
@@ -26,7 +26,7 @@ const store = configureStore({
     channelvideos: ChannelVideosReducer,
     channelplaylists: ChannelPlaylistReducer,
     upload: uploadReducer,
-    subscribtions: SubscribtionReducer,
+    subscribtionVideos: SubscribtionVideosReducer,
     comment: commentReducer,
     darkMode: darkModeReducer,
     uservideos: userVideoReducer,

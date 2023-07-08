@@ -40,13 +40,8 @@ const VideoPage = () => {
   const isLiked =
     currentVideo &&
     likedVideos.some((likedVideo) => likedVideo.id === currentVideo.id);
-  const subscribes = useSelector((state) => state.subscribtions);
-  const isSubscribe =
-    currentVideo &&
-    subscribes.some(
-      (subscribe) =>
-        subscribe?.snippet?.channelTitle === currentVideo?.snippet?.channelTitle
-    );
+  const subscribes = useSelector((state) => state.subscribtionVideos);
+
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -62,19 +57,19 @@ const VideoPage = () => {
   };
   const handleRemoveWatchLaterVideo = () => {
     dispatch(removeWatchLaterVideo(currentVideo.id));
-    toast.error("You removed the video !", {
+    toast.error("The video has been removed !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
   const handleLikedVideo = () => {
     dispatch(addLikedVideo(currentVideo));
-    toast.success("Success Notification !", {
+    toast.success("you are liked this video !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
   const handleUnlike = () => {
     dispatch(removeLikedVideo(currentVideo.id));
-    toast.error("Success Notification !", {
+    toast.error("The like has been removed  !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
@@ -84,11 +79,24 @@ const VideoPage = () => {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+
+  const isSubscribe = currentVideo && subscribes.find(subscribe =>
+    subscribe?.snippet?.channelTitle === currentVideo?.snippet?.channelTitle ||
+    subscribe?.snippet?.title === currentVideo?.snippet?.channelTitle
+  ) !== undefined;
+  
   const removeSubscribe = () => {
-    dispatch(removeSubscriptions(currentVideo.id));
-    toast.error("You are not subscribed !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
+    const subscribedVideo = subscribes.find(subscribe =>
+      subscribe?.snippet?.channelTitle === currentVideo?.snippet?.channelTitle ||
+      subscribe?.snippet?.title === currentVideo?.snippet?.channelTitle
+    );
+  
+    if (subscribedVideo) {
+      dispatch(removeSubscriptions(subscribedVideo?.id));
+      toast.error("You are not subscribed!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
   const likeButtonClassName = isLiked
     ? "fs-3 chip-action text-warning p-1 bg-dark button "
@@ -115,7 +123,9 @@ const VideoPage = () => {
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                 />
-                <h2 className="mt-2 card-title text">{currentVideo?.snippet?.title}</h2>
+                <h2 className="mt-2 card-title text">
+                  {currentVideo?.snippet?.title}
+                </h2>
 
                 {/* here the part of channel name and buttons that related for each video */}
                 <Row className="mb-4 mt-2">
@@ -153,13 +163,17 @@ const VideoPage = () => {
                     {/* <Button variant="dark">Subscribe</Button> */}
                     {isSubscribe ? (
                       <>
-                        <Button className="button bg-warning" onClick={removeSubscribe} >
+                        <Button variant="warning" onClick={removeSubscribe}>
                           Subscribed
                         </Button>
                       </>
                     ) : (
                       <>
-                        <Button className="Button button" onClick={addSubscribe} variant="dark">
+                        <Button
+                          className="Button"
+                          onClick={addSubscribe}
+                          variant="dark"
+                        >
                           Subscribe
                         </Button>
                       </>
@@ -176,10 +190,10 @@ const VideoPage = () => {
                   >
                     <Stack direction="row" spacing={1}>
                       <Chip
-                      className="Button text textdark "
+                        className="Button text textdark "
                         avatar={
                           <Avatar>
-                            <IoMdShareAlt className="fs-3   Button " />
+                            <IoMdShareAlt className="fs-3 Button " />
                           </Avatar>
                         }
                         label="share"
@@ -187,7 +201,7 @@ const VideoPage = () => {
                       {isLiked ? (
                         <>
                           <Chip
-                          className="Button text textdark"
+                            className="Button text textdark"
                             avatar={
                               <Avatar>
                                 <AiOutlineLike
@@ -221,7 +235,7 @@ const VideoPage = () => {
                       )}
 
                       <Chip
-                      className="Button text textdark"
+                        className="Button text textdark"
                         avatar={
                           <Avatar>
                             <AiOutlineDislike className="fs-3 Button" />
@@ -232,7 +246,7 @@ const VideoPage = () => {
                       {isSaved ? (
                         <>
                           <Chip
-                          className="Button text textdark"
+                            className="Button text textdark"
                             avatar={
                               <Avatar>
                                 <BiSave
@@ -247,7 +261,7 @@ const VideoPage = () => {
                       ) : (
                         <>
                           <Chip
-                          className="Button text textdark"
+                            className="Button text textdark"
                             avatar={
                               <Avatar>
                                 <BiSave
@@ -267,8 +281,8 @@ const VideoPage = () => {
 
                 <Row className="mb-4 shadow-sm ">
                   <Accordion defaultActiveKey="0">
-                    <Accordion.Item  eventKey="0">
-                      <Accordion.Header  >
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header>
                         <div>
                           <p className="card-title">
                             {" "}
@@ -294,10 +308,10 @@ const VideoPage = () => {
                 </Row>
 
                 {/* here the part of comments */}
-                <Row >
+                <Row>
                   <Col className="mb-3">
                     <Accordion defaultActiveKey="0">
-                      <Accordion.Item  eventKey="0">
+                      <Accordion.Item eventKey="0">
                         <Accordion.Header>
                           <h6 className="card-title">see comments</h6>
                         </Accordion.Header>
