@@ -61,15 +61,15 @@ const VideoUploadForm = () => {
     >
       <div className="row w-100 login-card">
         <div className="col-12 w-100">
-          <div className=" shadowDark w-100 d-flex">
+          <div className=" shadowDark w-100 d-flex flex-wrap">
             <form
-              className="w-50"
+              className="w-md-100"
               style={{ background: "transparent" }}
               onSubmit={handleSubmit}
             >
-              <div className="name">
+              <div className="name w-100">
                 <input
-                  className="form-control  mb-3 neumer-input"
+                  className="form-control  mb-3 neumer-input w-100"
                   type="text"
                   placeholder="title"
                   id="title"
@@ -128,17 +128,15 @@ const VideoUploadForm = () => {
                   <option value="private">private</option>
                 </select>
               </div>
-             
             </form>
-            <div className="mb-5 mx-4">
-                <Button className="Button" type="submit">Upload</Button>
-              </div>
-            <img
-              className="w-50"
-              src="https://storyxpress.co/static-app/img/upload_illustration.svg"
-              alt=""
-            />
            
+            <div className="w-50 d-none d-md-flex">
+              <img
+                className="w-100"
+                src="https://storyxpress.co/static-app/img/upload_illustration.svg"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>

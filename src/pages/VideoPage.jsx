@@ -26,13 +26,14 @@ import {
   removeSubscriptions,
 } from "../Redux/Slices/SubscribtionVideos";
 import { fetchComments, getComments } from "../Redux/Slices/CommentSlice";
+import { addDisLikedVideo, removeDisLikedVideo } from "../Redux/Slices/DislikeVideo";
 
 const VideoPage = () => {
   const currentVideo = useSelector(singleVideo);
-  const channel = useSelector(getChannel);
   const status = useSelector(selectVideosStatus);
   const { id } = useParams();
   const likedVideos = useSelector((state) => state.likedVideos);
+  const dislikedVideos = useSelector((state) => state.dislikedVideos);
   const watchLater = useSelector((state) => state.watchLater);
   const comments = useSelector(getComments);
   const isSaved =
@@ -40,8 +41,12 @@ const VideoPage = () => {
   const isLiked =
     currentVideo &&
     likedVideos.some((likedVideo) => likedVideo.id === currentVideo.id);
+  const isDisLiked =
+    currentVideo &&
+    dislikedVideos.some(
+      (dislikedVideo) => dislikedVideo.id === currentVideo.id
+    );
   const subscribes = useSelector((state) => state.subscribtionVideos);
-
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -61,9 +66,21 @@ const VideoPage = () => {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+  const handleDisLikedVideo = () => {
+    dispatch(addDisLikedVideo(currentVideo));
+    toast.success("you are Disliked this video !", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
   const handleLikedVideo = () => {
     dispatch(addLikedVideo(currentVideo));
     toast.success("you are liked this video !", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  const handleUnDislike = () => {
+    dispatch(removeDisLikedVideo(currentVideo.id));
+    toast.error("The Dislike video has been removed  !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
@@ -80,17 +97,23 @@ const VideoPage = () => {
     });
   };
 
-  const isSubscribe = currentVideo && subscribes.find(subscribe =>
-    subscribe?.snippet?.channelTitle === currentVideo?.snippet?.channelTitle ||
-    subscribe?.snippet?.title === currentVideo?.snippet?.channelTitle
-  ) !== undefined;
-  
+  const isSubscribe =
+    currentVideo &&
+    subscribes.find(
+      (subscribe) =>
+        subscribe?.snippet?.channelTitle ===
+          currentVideo?.snippet?.channelTitle ||
+        subscribe?.snippet?.title === currentVideo?.snippet?.channelTitle
+    ) !== undefined;
+
   const removeSubscribe = () => {
-    const subscribedVideo = subscribes.find(subscribe =>
-      subscribe?.snippet?.channelTitle === currentVideo?.snippet?.channelTitle ||
-      subscribe?.snippet?.title === currentVideo?.snippet?.channelTitle
+    const subscribedVideo = subscribes.find(
+      (subscribe) =>
+        subscribe?.snippet?.channelTitle ===
+          currentVideo?.snippet?.channelTitle ||
+        subscribe?.snippet?.title === currentVideo?.snippet?.channelTitle
     );
-  
+
     if (subscribedVideo) {
       dispatch(removeSubscriptions(subscribedVideo?.id));
       toast.error("You are not subscribed!", {
@@ -99,6 +122,9 @@ const VideoPage = () => {
     }
   };
   const likeButtonClassName = isLiked
+    ? "fs-3 chip-action text-warning p-1 bg-dark button "
+    : "fs-3 chip-action button Button";
+  const dislikeButtonClassName = isDisLiked
     ? "fs-3 chip-action text-warning p-1 bg-dark button "
     : "fs-3 chip-action button Button";
   const saveButtonClassName = isSaved
@@ -234,15 +260,39 @@ const VideoPage = () => {
                         </>
                       )}
 
-                      <Chip
-                        className="Button text textdark"
-                        avatar={
-                          <Avatar>
-                            <AiOutlineDislike className="fs-3 Button" />
-                          </Avatar>
-                        }
-                        label="dislike"
-                      />
+                
+                       {isDisLiked ? (
+                        <>
+                          <Chip
+                            className="Button text textdark"
+                            avatar={
+                              <Avatar>
+                                <AiOutlineDislike
+                                  onClick={handleUnDislike}
+                                  className={dislikeButtonClassName}
+                                />
+                              </Avatar>
+                            }
+                            label="undislike"
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <Chip
+                            className="Button text textdark"
+                            avatar={
+                              <Avatar>
+                                <AiOutlineDislike
+                                  onClick={handleDisLikedVideo}
+                                  className={dislikeButtonClassName}
+                                />
+                              </Avatar>
+                            }
+                            label="dislike"
+                          />
+                        </>
+                      )}
+
                       {isSaved ? (
                         <>
                           <Chip

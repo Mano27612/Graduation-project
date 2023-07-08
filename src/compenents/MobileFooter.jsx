@@ -56,11 +56,13 @@ const MobileFooter = () => {
           }
         />
        </Link>
-        <BottomNavigationAction
+       <Link to={"/upload-video"}>
+       <BottomNavigationAction
           label="Add"
           value="add"
           icon={<BsPlusCircle className="fs-1" />}
         />
+       </Link>
         <Link to={"videos-i-liked"}>
         
         <BottomNavigationAction
