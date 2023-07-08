@@ -20,10 +20,8 @@ const ChannelVideos = () => {
   const dispatch = useDispatch();
   const videos = useSelector(getVideosOfChannel);
   const channel = useSelector(getChannel);
-  const subscribes = useSelector((state) => state.subscribtions);
-  const isSubscribe =
-  channel &&
-    subscribes.some((subscribe) => subscribe?.snippet?.title  === channel?.snippet?.title || subscribe?.snippet?.channelTitle  === channel?.snippet?.title);
+  const subscribes = useSelector((state) => state.subscribtionVideos);
+ 
   useEffect(() => {
     dispatch(fetchChannelById(id));
     dispatch(fetchVideosByChannel(id));
@@ -34,11 +32,24 @@ const ChannelVideos = () => {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+
+  const isSubscribe = channel && subscribes.find(subscribe =>
+    subscribe?.id === channel?.id ||
+    subscribe?.snippet?.channelId === channel?.id
+  ) !== undefined;
+  
   const removeSubscribe = () => {
-    dispatch(removeSubscriptions(channel.id));
-    toast.error("You are not subscribed !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
+    const subscribedChannel = subscribes.find(subscribe =>
+      subscribe?.id === channel?.id ||
+      subscribe?.snippet?.channelId === channel?.id
+    );
+  
+    if (subscribedChannel) {
+      dispatch(removeSubscriptions(channel?.id));
+      toast.error("You are not subscribed!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
   return (
     <>
@@ -81,13 +92,13 @@ const ChannelVideos = () => {
                   
                   {isSubscribe ? (
                       <>
-                        <Button className="me-5 mx-sm-5 Button" onClick={removeSubscribe} variant="danger">
+                        <Button className="me-5 mx-sm-5 " onClick={removeSubscribe} variant="warning">
                           Subscribed
                         </Button>
                       </>
                     ) : (
                       <>
-                        <Button className="me-5 mx-sm-5 button Button" onClick={addSubscribe} variant="dark">
+                        <Button className="me-5 mx-sm-5  Button" onClick={addSubscribe} variant="dark">
                           Subscribe
                         </Button>
                       </>

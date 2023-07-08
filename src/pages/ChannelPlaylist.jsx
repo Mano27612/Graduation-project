@@ -29,25 +29,32 @@ const ChannelPlaylist = () => {
     dispatch(fetchChannelById(id));
     dispatch(fetchPlaylistsByChannel(id));
   }, [id, dispatch]);
-  const subscribes = useSelector((state) => state.subscribtions);
-  const isSubscribe =
-    channel &&
-    subscribes.some(
-      (subscribe) =>
-        subscribe?.snippet?.title === channel?.snippet?.title ||
-        subscribe?.snippet?.channelTitle === channel?.snippet?.title
-    );
+  const subscribes = useSelector((state) => state.subscribtionVideos);
+
   const addSubscribe = () => {
     dispatch(addSubscriptions(channel));
     toast.success("You are subscribed !", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+ 
+  const isSubscribe = channel && subscribes.find(subscribe =>
+    subscribe?.id === channel?.id ||
+    subscribe?.snippet?.channelId === channel?.id
+  ) !== undefined;
+  
   const removeSubscribe = () => {
-    dispatch(removeSubscriptions(channel.id));
-    toast.error("You are not subscribed !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
+    const subscribedChannel = subscribes.find(subscribe =>
+      subscribe?.id === channel?.id ||
+      subscribe?.snippet?.channelId === channel?.id
+    );
+  
+    if (subscribedChannel) {
+      dispatch(removeSubscriptions(subscribedChannel?.id));
+      toast.error("You are not subscribed!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
   return (
     <>
@@ -91,9 +98,9 @@ const ChannelPlaylist = () => {
                   {isSubscribe ? (
                     <>
                       <Button
-                        className="me-5 mx-sm-5 Button"
+                        className="me-5 mx-sm-5 "
                         onClick={removeSubscribe}
-                        
+                        variant="warning"
                       >
                         Subscribed
                       </Button>
@@ -117,8 +124,8 @@ const ChannelPlaylist = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link className="text Link" to={`/channel/${id}/videos`}>Videos</Link>
-              <Link className="text Link" to={`/channel/${id}/playlists`}>Playlists</Link>
+              <Link className="text LINK" to={`/channel/${id}/videos`}>Videos</Link>
+              <Link className="text LINK" to={`/channel/${id}/playlists`}>Playlists</Link>
             </div>
             <hr />
 

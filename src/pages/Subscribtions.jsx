@@ -8,7 +8,7 @@ import { Avatar } from "@mui/material";
 import MobileFooter from "../compenents/MobileFooter";
 
 const Subscribtions = () => {
-  const subscribtionVideos = useSelector((state) => state.subscribtions);
+  const subscribtionVideos = useSelector((state) => state.subscribtionVideos);
   return (
     <Container style={{ marginTop: "100px" }} fluid>
       <Row>

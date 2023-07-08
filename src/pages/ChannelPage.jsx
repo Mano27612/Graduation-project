@@ -5,24 +5,21 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getChannel, fetchChannelById } from "../Redux/Slices/ChannelSlice";
 import { formatNumber } from "../Utils/FormatNumber";
-import "../App.css"
+import "../App.css";
 import {
   addSubscriptions,
   removeSubscriptions,
 } from "../Redux/Slices/SubscribtionVideos";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const ChannelPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const channel = useSelector(getChannel);
-  const subscribes = useSelector((state) => state.subscribtions);
-  const isSubscribe =
-    channel &&
-    subscribes.some(
-      (subscribe) =>
-        subscribe?.snippet?.channelTitle === channel?.snippet?.title
-    );
+  const subscribes = useSelector((state) => state.subscribtionVideos);
+
+
   useEffect(() => {
     dispatch(fetchChannelById(id));
   }, [id, dispatch]);
@@ -32,12 +29,32 @@ const ChannelPage = () => {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+
+
+  const isSubscribe =
+    channel &&
+    subscribes.find(
+      (subscribe) =>
+        subscribe?.id === channel?.id ||
+        subscribe?.snippet?.channelId === channel?.id
+    ) !== undefined;
+
   const removeSubscribe = () => {
-    dispatch(removeSubscriptions(channel.id));
-    toast.error("You are not subscribed !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
+    const subscribedChannel = subscribes.find(
+      (subscribe) =>
+        subscribe?.id === channel?.id ||
+        subscribe?.snippet?.channelId === channel?.id
+    );
+
+    if (subscribedChannel) {
+      dispatch(removeSubscriptions(subscribedChannel?.id));
+
+      toast.error("You are not subscribed!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
+
   return (
     <>
       <Container fluid style={{ marginTop: "100px" }}>
@@ -77,25 +94,21 @@ const ChannelPage = () => {
                   </span>
 
                   {isSubscribe ? (
-                    <>
-                      <Button
-                        className="mx-0 mx-sm-5 Button button"
-                        onClick={removeSubscribe}
-                       
-                      >
-                        Subscribed
-                      </Button>
-                    </>
+                    <Button
+                      className="mx-0 mx-sm-5"
+                      onClick={removeSubscribe}
+                      variant="warning"
+                    >
+                      Subscribed
+                    </Button>
                   ) : (
-                    <>
-                      <Button
-                        className="mx-0 mx-sm-5 button Button"
-                        onClick={addSubscribe}
-                        variant="dark"
-                      >
-                        Subscribe
-                      </Button>
-                    </>
+                    <Button
+                      className="mx-0 mx-sm-5 Button"
+                      onClick={addSubscribe}
+                      variant="dark"
+                    >
+                      Subscribe
+                    </Button>
                   )}
                 </div>
               </div>
@@ -103,8 +116,12 @@ const ChannelPage = () => {
 
             {/* Links of profile videos and playlists */}
             <div className="mt-3 d-flex justify-content-center w-50 gap-5">
-              <Link className="text LINK" to={`/channel/${id}/videos`}>Videos</Link>
-              <Link className="text LINK" to={`/channel/${id}/playlists`}>Playlists</Link>
+              <Link className="text LINK" to={`/channel/${id}/videos`}>
+                Videos
+              </Link>
+              <Link className="text LINK" to={`/channel/${id}/playlists`}>
+                Playlists
+              </Link>
             </div>
             <hr />
           </Col>

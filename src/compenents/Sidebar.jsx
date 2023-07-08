@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Sidebar() {
-const channels = useSelector((state) => state.subscribtions)
+const channels = useSelector((state) => state.subscribtionVideos)
 
 const [currentPath, setCurrentPath] = useState("");
 
