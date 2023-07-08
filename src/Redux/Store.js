@@ -14,6 +14,7 @@ import commentReducer from "./Slices/CommentSlice";
 import darkModeReducer from "./Slices/DarkMode";
 import userVideoReducer from "./Slices/UserVideos";
 import ImageSlice from "./Slices/ImageSlice";
+import DislikeVideoReducer from "./Slices/DislikeVideo";
 const store = configureStore({
   reducer: {
     videos: videosReducer,
@@ -30,7 +31,8 @@ const store = configureStore({
     comment: commentReducer,
     darkMode: darkModeReducer,
     uservideos: userVideoReducer,
-    image: ImageSlice
+    image: ImageSlice,
+    dislikedVideos: DislikeVideoReducer
   },
 });
 
