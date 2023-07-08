@@ -15,7 +15,6 @@ import { addLikedVideo, removeLikedVideo } from "../Redux/Slices/LikedVideos";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { formatNumber } from "./../Utils/FormatNumber";
-import { getChannel } from "../Redux/Slices/ChannelSlice";
 import { fetchChannelById } from "../Redux/Slices/ChannelSlice";
 import {
   addWatchLaterVideo,
@@ -33,7 +32,7 @@ const VideoPage = () => {
   const status = useSelector(selectVideosStatus);
   const { id } = useParams();
   const likedVideos = useSelector((state) => state.likedVideos);
-  const dislikedVideos = useSelector((state) => state.dislikedVideos);
+  const dislikedVideos = useSelector((state) => state.dislike);
   const watchLater = useSelector((state) => state.watchLater);
   const comments = useSelector(getComments);
   const isSaved =
@@ -134,6 +133,7 @@ const VideoPage = () => {
     <>
       <Container fluid style={{ marginTop: "90px" }}>
         <ToastContainer />
+        {status === "loading" && <Loading/>}
         <Row>
           {status === "loading" ? (
             <Loading />

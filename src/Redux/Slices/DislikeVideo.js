@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const DislikeVideoSlice = createSlice({
-  name: "dislikedVideos",
+const dislikeVideoSlice = createSlice({
+  name: "dislike",
   initialState: JSON.parse(localStorage.getItem("dislikedVideos")) || [],
   reducers: {
     addDisLikedVideo: (state, action) => {
@@ -16,5 +16,5 @@ const DislikeVideoSlice = createSlice({
     },
   },
 });
-export default DislikeVideoSlice.reducer;
-export const { addDisLikedVideo, removeDisLikedVideo } = DislikeVideoSlice.actions;
+export default dislikeVideoSlice.reducer;
+export const { addDisLikedVideo, removeDisLikedVideo } = dislikeVideoSlice.actions;

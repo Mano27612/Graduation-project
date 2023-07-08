@@ -50,6 +50,7 @@ const VideoList = () => {
         </Col>
       </Row>
       <Row className="d-flex ">
+        {status === "loading" && <Loading/>}
         {categoryVideos && categoryVideos.length > 0
           ? categoryVideos.map((video, index) => (
               <Col
