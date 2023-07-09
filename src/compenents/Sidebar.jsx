@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
-import { AiFillHome, AiFillLike } from "react-icons/ai";
+import { AiFillHome, AiFillLike, AiOutlineDislike } from "react-icons/ai";
 import { MdSubscriptions } from "react-icons/md";
 import { BsFillStopwatchFill } from "react-icons/bs";
 import { Avatar } from "@mui/material";
@@ -64,6 +64,12 @@ useEffect(() => {
           <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
             <AiFillLike className="fs-5" />
             <p className="mb-0">Videos I liked</p>
+          </div>
+        </Link>
+        <Link className={currentPath === "/videos-i-liked" ? "active activeDark" : "link text"} to={"/dislike-videos"}>
+          <div className="d-flex align-items-center gap-2 mb-2 p-2 rounded sidebar-item">
+            <AiOutlineDislike className="fs-5" />
+            <p className="mb-0 text-truncate">Dislike videos</p>
           </div>
         </Link>
         <hr />

@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import videosReducer from "./Slices/VideoSlice";
 // import relatedVideosReducer from "./Slices/RelatedVideos";
 import ChannelReducer from "./Slices/ChannelSlice";
@@ -14,7 +15,7 @@ import commentReducer from "./Slices/CommentSlice";
 import darkModeReducer from "./Slices/DarkMode";
 import userVideoReducer from "./Slices/UserVideos";
 import ImageSlice from "./Slices/ImageSlice";
-import DislikeVideoReducer from "./Slices/DislikeVideo";
+import dislikeVideoReducer from "./Slices/DislikeVideo";
 const store = configureStore({
   reducer: {
     videos: videosReducer,
@@ -32,7 +33,7 @@ const store = configureStore({
     darkMode: darkModeReducer,
     uservideos: userVideoReducer,
     image: ImageSlice,
-    dislikedVideos: DislikeVideoReducer
+    dislike: dislikeVideoReducer,
   },
 });
 
